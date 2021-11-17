@@ -1,0 +1,9 @@
+node_modules/
+.vscode
+.editorconfig
+yarn.lock
+yarn-error.log
+.env
+todo.yml
+package-lock.json
+dist
