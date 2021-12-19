@@ -6,22 +6,14 @@ import graphQLLoader from './graphql'
 
 export default ({ app }: { app: Express }) => {
 
-  dbLoader()
+  return dbLoader()
     .then(() => consola.success("Loading database loader successfully"))
+    .then(() => graphQLLoader({ app }))
+    .then(() => consola.success("Loading graphQL loader successfully"))
+    .then(() => expressLoader({ app }))
+    .then(() => consola.success("Loading express loader successfully"))
     .catch(err => {
       consola.error(err)
       process.exit(1)
     })
-
-  graphQLLoader({ app })
-    .then(() => {
-      consola.success("Loading graphQL loader successfully")
-      expressLoader({ app })
-    }).then(() => consola.success("Loading express loader successfully"))
-
-
-
-
-
-
 }

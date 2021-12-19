@@ -13,7 +13,7 @@ const reservationSchema = new Schema<Reservation, Model<Reservation>, Reservatio
     type: String,
     required: true,
   },
-  reservedBy: {
+  user: {
     type: String,
     required: true,
   },

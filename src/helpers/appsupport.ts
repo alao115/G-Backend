@@ -47,7 +47,7 @@ export function onListening({ server }: { server: Server; }) {
       `pipe ${  addr}` :
       `port ${  addr?.port}`; */
 
-  consola.success(`Listening on ${(addr as AddressInfo).port}`)
+  consola.success(`Http server start on: http://localhost:${(addr as AddressInfo).port}`)
 }
 
 export function handle404(_req: Request, _res: Response, next: NextFunction) {

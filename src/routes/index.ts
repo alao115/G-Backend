@@ -3,14 +3,14 @@ import express from 'express'
 import userRoute from './userRoute'
 import authRoute from './authRoute'
 
-import { ValidationManager, JWTService } from '../services'
+import { validationService, JWTService } from '../services'
 
 export default () => {
     const app = express()
 
-    authRoute({ app, ValidationManager: new ValidationManager() })
+    authRoute({ app, ValidationManager: validationService })
 
-    userRoute({ app, ValidationManager: new ValidationManager(), JWTService })
+    userRoute({ app, ValidationManager: validationService, JWTService })
 
     return app
 }

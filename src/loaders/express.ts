@@ -1,5 +1,5 @@
 import express, { Express } from 'express'
-import cors from 'cors'
+// import cors from 'cors'
 import logger from 'morgan'
 
 import routes from '../routes'
@@ -7,7 +7,7 @@ import { handle404, basicErrorHandler } from '../helpers/appsupport';
 
 export default ({ app }: { app: Express }) => {
 
-    app.use(cors())
+    // app.use(cors())
     app.use(express.json());
 
     if (app.get('env') === 'development') app.use(logger('dev'))

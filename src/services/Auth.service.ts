@@ -6,7 +6,7 @@ import { Container, ContainerInstance, Service, Inject } from "typedi";
 @Service('AuthManager')
 export default class AuthManager {
 
-  constructor(private JWTManager: any, private userService: any ) {}
+  constructor(private JWTManager: any, private userService: any, private accountService: any ) {}
 
   async signUp (data: any) {
     try {
@@ -24,6 +24,10 @@ export default class AuthManager {
         ...data,
         password: hashedPassword
       });
+
+      // Create user account
+      const account = await this.accountService.create({ ...data, user: user.id})
+      console.log('Account: ', account)
 
       //Generate accessToken and refreshToken
       const accessToken = await this.JWTManager.signToken(user.id);

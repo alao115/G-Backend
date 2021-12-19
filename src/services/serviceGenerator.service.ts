@@ -15,7 +15,7 @@ export default class serviceGenerator<T extends Model<any>> {
 
   async findByID({ id }: { id: string }) {
     try {
-      const entity = await this.Model.findById(id, { __v: false });
+      const entity = await this.Model.findById(id, { __v: false, password: false });
       return entity;
     } catch (error) { throw error; }
   }

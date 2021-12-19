@@ -7,6 +7,8 @@ export default class ValidationManager {
   schemas = {
     signup: Joi.object({
       email: Joi.string().email().required(),
+      firstname: Joi.string().required(),
+      lastname: Joi.string().required(),
       password: Joi.string().min(8).required()
     }),
 

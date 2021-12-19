@@ -1,27 +1,19 @@
 import { Schema, model, Model } from 'mongoose';
 import moment from 'moment';
-import Visit from '../types/visit';
+import AppartmentType from '../types/appartmentType';
 
-const visitSchema = new Schema<Visit, Model<Visit>, Visit>({
+const appartmentTypeSchema = new Schema<AppartmentType, Model<AppartmentType> ,AppartmentType>({
   id: {
     type: String,
     default() {
       return this._id;
     }
   },
-  appartment: {
+  label: {
     type: String,
     required: true,
   },
-  user: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: String,
-    required: true,
-  },
-  status: {
+  description: {
     type: String,
     default: ''
   }
@@ -29,4 +21,4 @@ const visitSchema = new Schema<Visit, Model<Visit>, Visit>({
   timestamps: { currentTime: () => moment().unix() }
 })
 
-export default model<Visit>('visits', visitSchema)
+export default model<AppartmentType>('appartmentTypes', appartmentTypeSchema)

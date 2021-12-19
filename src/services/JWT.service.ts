@@ -39,7 +39,8 @@ export default  class JWTManager {
 
     if (!authHeader) return next(new createError.Unauthorized());
 
-    const token = authHeader.split(" ")[1];
+    // const token = authHeader.split(" ")[1];
+    const token = authHeader.replace('Bearer', '').replace('Bearer', '').trim()
 
     const publicKey = fs.readFileSync(path.join("dist/keys", "public.pem"), "utf-8");
 

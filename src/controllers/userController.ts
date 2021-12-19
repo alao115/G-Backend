@@ -15,6 +15,7 @@ export default ({ userService }: { userService: any }) => class UserController {
 
   getAuthUser: RequestHandler = async (req, res, next) => {
     try {
+      res.send({ data: { user: res.locals.authUser }})
 
     } catch (error) { next(error); }
   }

@@ -22,11 +22,12 @@ const accountSchema = new Schema<Account, Model<Account>, Account>({
   },
   userType: {
     type: Number,
-    required: true
+    // required: true
+    default: 0
   },
   status: {
     type: String,
-    required: true
+    // required: true
   },
   createdAt: String,
   firstname: {
@@ -39,11 +40,11 @@ const accountSchema = new Schema<Account, Model<Account>, Account>({
   },
   civility: {
     type: String,
-    required: true
+    // required: true
   },
   phone: {
     type: String,
-    required: true
+    // required: true
   },
   email: {
     type: String,
@@ -51,7 +52,7 @@ const accountSchema = new Schema<Account, Model<Account>, Account>({
   },
   adminType: {
     type: String,
-    required: true
+    // required: true
   },
   updatedAt: String,
 }, { timestamps: { currentTime: () => moment().unix() } })

@@ -26,7 +26,15 @@ const publicationSchema = new Schema<Publication, Model<Publication>, Publicatio
   status: {
     type: String,
     required: true,
-  }
+  },
+  views: {
+    type: Number,
+    default: 0
+  },
+  // isNew: {
+  //   type: Boolean,
+  //   default: true
+  // },
 }, {
   timestamps: { currentTime: () => moment().unix() }
 })

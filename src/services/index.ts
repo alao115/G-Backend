@@ -3,7 +3,7 @@ import AuthService from './Auth.service'
 import ValidationManager from './validation.service'
 import RedisClientManager from './redisClient.service'
 import serviceGeneratorService from './serviceGenerator.service'
-import { User, Account, Appartment, AppartmentDetail, Publication, Reservation, Visit } from "../models"
+import { User, Account, Appartment, AppartmentDetail, Publication, Reservation, Visit, AppartmentType } from "../models"
 
 
 const RedisClientService = new RedisClientManager()
@@ -22,9 +22,13 @@ const reservationService = new serviceGeneratorService(Reservation)
 
 const visitService = new serviceGeneratorService(Visit)
 
+const appartmentTypeService = new serviceGeneratorService(AppartmentType)
+
 const JWTService = new JWTManager(RedisClientService, userService)
 
-const AuthManager = new AuthService(JWTService, userService)
+const AuthManager = new AuthService(JWTService, userService, accountService)
+
+const validationService = new ValidationManager()
 
 
 export {
@@ -34,9 +38,11 @@ export {
   accountService,
   appartmentService,
   appartmentDetailService,
+  appartmentTypeService,
   publicationService,
   reservationService,
   visitService,
   AuthManager,
-  ValidationManager
+  ValidationManager,
+  validationService
 }
