@@ -3,11 +3,8 @@ import consola from 'consola'
 import config from '../config'
 
 
-// const client = createClient(Number(config.redisPort), config.redisHost);
-// const client = createClient(config.redisUri, { db: config.redisDB, password: config.redisPass });
-
 export default () => {
-  const client = createClient(config.redisUri, { db: config.redisDB });
+  const client = config.redisPass ? createClient(config.redisUri, { db: config.redisDB, password: config.redisPass }) : createClient(config.redisUri, { db: config.redisDB });
     return new Promise((resolve, reject) => {
 
         client.on("connect", () => {
