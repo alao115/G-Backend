@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+
+@font-face {
+  font-family: 'Cera Pro';
+  src: local('Cera Pro'), url(./fonts/Cera-Pro-medium.woff) format('woff');
+}
+
+
+html,
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
