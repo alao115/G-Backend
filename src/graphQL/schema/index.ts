@@ -123,7 +123,7 @@ const schema = gql`
     # energyCommision: Float
     # numberOffPrepaidMonths: Float
     mainImg: String
-    appartmentType: Int
+    appartmentType: ID
     isFurnished: Boolean
     location: String
     rent: Int
@@ -165,7 +165,7 @@ const schema = gql`
     # energyCommision: Float
     # numberOffPrepaidMonths: Float
     mainImg: String
-    appartmentType: Int
+    appartmentType: ID
     isFurnished: Boolean
     location: String
     rent: Int
