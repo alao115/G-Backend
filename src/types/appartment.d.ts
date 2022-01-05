@@ -1,17 +1,7 @@
 export default interface Appartment {
   id: string;
-  // owner: string;
-  // tenant: string;
-  // createdBy: string;
-  // createdAt: string;
-  // location: string;
-  // rent: number;
-  // status: string;
-  // advancePayment: number;
-  // energyCommision: number;
-  // numberOffPrepaidMonths: number;
   mainImg: string;
-  appartmentType: number;
+  appartmentType: string;
   isFurnished: boolean;
   location: string;
   rent: number;
@@ -33,7 +23,9 @@ export default interface Appartment {
   conditions: {
     advancePayment: number;
     energyCommission: number;
-    prepaidRentMonths: number
+    prepaidRentMonths: number;
+    rent: number;
+    paymentFrequency: number
   },
   ownerInfos: string;
   likes: number;
