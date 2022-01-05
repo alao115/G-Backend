@@ -110,22 +110,14 @@ const schema = (0, apollo_server_core_1.gql) `
     advancePayment: Int
     energyCommission: Int
     prepaidRentMonths: Int
+    rent: Int
+    paymentFrequency: Int
   }
 
   type Appartment {
     id: ID!
-    # owner: String
-    # tenant: String
-    # createdBy: String
-    # createdAt: String
-    # location: String
-    # rent: Float
-    # status: String
-    # advancePayment: Float
-    # energyCommision: Float
-    # numberOffPrepaidMonths: Float
     mainImg: String
-    appartmentType: Int
+    appartmentType: String
     isFurnished: Boolean
     location: String
     rent: Int
@@ -154,20 +146,12 @@ const schema = (0, apollo_server_core_1.gql) `
     advancePayment: Int
     energyCommission: Int
     prepaidRentMonths: Int
+    rent: Int
+    paymentFrequency: Int
   }
   input appartmentData {
-    # owner: String
-    # tenant: String
-    # createdBy: String
-    # createdAt: String
-    # location: String
-    # rent: Float
-    # status: String
-    # advancePayment: Float
-    # energyCommision: Float
-    # numberOffPrepaidMonths: Float
     mainImg: String
-    appartmentType: Int
+    appartmentType: String
     isFurnished: Boolean
     location: String
     rent: Int

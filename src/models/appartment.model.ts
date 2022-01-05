@@ -48,7 +48,7 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
     default: ''
   },
   appartmentType: {
-    type: Number,
+    type: String,
     required: true
   },
   isFurnished: {
@@ -136,6 +136,14 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
       type: Number,
       default: 0
     },
+    rent: {
+      type: Number,
+      default: 0
+    },
+    paymentFrequency: {
+      type: Number,
+      default: 0
+    }
   },
   ownerInfos: {
     type: String,

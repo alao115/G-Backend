@@ -17,7 +17,7 @@ const appartmentSchema = new mongoose_1.Schema({
         default: ''
     },
     appartmentType: {
-        type: Number,
+        type: String,
         required: true
     },
     isFurnished: {
@@ -105,6 +105,14 @@ const appartmentSchema = new mongoose_1.Schema({
             type: Number,
             default: 0
         },
+        rent: {
+            type: Number,
+            default: 0
+        },
+        paymentFrequency: {
+            type: Number,
+            default: 0
+        }
     },
     ownerInfos: {
         type: String,
