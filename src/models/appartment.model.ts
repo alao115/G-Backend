@@ -57,7 +57,7 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
   },
   location: {
     type: String,
-    required: true
+    // required: true
   },
   rent: {
     type: Number,

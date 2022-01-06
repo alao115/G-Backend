@@ -26,7 +26,6 @@ const appartmentSchema = new mongoose_1.Schema({
     },
     location: {
         type: String,
-        required: true
     },
     rent: {
         type: Number,
