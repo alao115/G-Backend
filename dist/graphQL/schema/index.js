@@ -114,6 +114,7 @@ const schema = (0, apollo_server_core_1.gql) `
     paymentFrequency: Int
   }
   type ownerInfos {
+    civility: String
     firstname: String
     lastname: String
     address: String
@@ -158,6 +159,7 @@ const schema = (0, apollo_server_core_1.gql) `
     paymentFrequency: Int
   }
   input ownerInfosData {
+    civility: String
     firstname: String
     lastname: String
     address: String

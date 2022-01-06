@@ -146,6 +146,10 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
     }
   },
   ownerInfos: {
+    civility: {
+      type: String,
+      required: true
+    },
     firstname: {
       type: String,
       required: true
