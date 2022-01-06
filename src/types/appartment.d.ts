@@ -28,9 +28,10 @@ export default interface Appartment {
     paymentFrequency: number;
   },
   ownerInfos: {
-    name: string;
+    firstname: string;
+    lastname: string;
     address: string;
-    status: string;
+    isAlive: boolean;
     phone: string;
     email: string;
   };
