@@ -112,6 +112,7 @@ const schema = gql`
     paymentFrequency: Int
   }
   type ownerInfos {
+    civility: String
     firstname: String
     lastname: String
     address: String
@@ -156,6 +157,7 @@ const schema = gql`
     paymentFrequency: Int
   }
   input ownerInfosData {
+    civility: String
     firstname: String
     lastname: String
     address: String

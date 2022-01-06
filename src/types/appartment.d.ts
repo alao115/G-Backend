@@ -28,6 +28,7 @@ export default interface Appartment {
     paymentFrequency: number;
   },
   ownerInfos: {
+    civility: string;
     firstname: string;
     lastname: string;
     address: string;
