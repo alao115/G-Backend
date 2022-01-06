@@ -111,6 +111,14 @@ const schema = gql`
     rent: Int
     paymentFrequency: Int
   }
+  type ownerInfos {
+    firstname: String
+    lastname: String
+    address: String
+    isAlive: Boolean
+    phone: String
+    email: String
+  }
 
   type Appartment {
     id: ID!
@@ -135,7 +143,7 @@ const schema = gql`
     householdsTotal: Int
     groundLevel: Int
     conditions: appartmentCondition,
-    ownerInfos: String
+    ownerInfos: ownerInfos
     likes: Int
     favorite: Int
   }
@@ -146,6 +154,14 @@ const schema = gql`
     prepaidRentMonths: Int
     rent: Int
     paymentFrequency: Int
+  }
+  input ownerInfosData {
+    firstname: String
+    lastname: String
+    address: String
+    isAlive: Boolean
+    phone: String
+    email: String
   }
   input appartmentData {
     mainImg: String
@@ -169,7 +185,7 @@ const schema = gql`
     householdsTotal: Int
     groundLevel: Int
     conditions: appartmentConditionData,
-    ownerInfos: String
+    ownerInfos: ownerInfosData
     likes: Int
     favorite: Int
   }

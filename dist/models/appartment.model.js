@@ -115,15 +115,20 @@ const appartmentSchema = new mongoose_1.Schema({
         }
     },
     ownerInfos: {
-        name: {
+        firstname: {
+            type: String,
+            required: true
+        },
+        lastname: {
             type: String,
             required: true
         },
         address: {
             type: String,
         },
-        status: {
-            type: String,
+        isAlive: {
+            type: Boolean,
+            default: true
         },
         phone: {
             type: String,
