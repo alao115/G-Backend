@@ -146,8 +146,23 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
     }
   },
   ownerInfos: {
-    type: String,
-    required: true
+    name: {
+      type: String,
+      required: true
+    },
+    address: {
+      type: String,
+    },
+    status: {
+      type: String,
+    },
+    phone: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+    },
   },
   likes: {
     type: Number,

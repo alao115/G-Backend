@@ -25,9 +25,15 @@ export default interface Appartment {
     energyCommission: number;
     prepaidRentMonths: number;
     rent: number;
-    paymentFrequency: number
+    paymentFrequency: number;
   },
-  ownerInfos: string;
+  ownerInfos: {
+    name: string;
+    address: string;
+    status: string;
+    phone: string;
+    email: string;
+  };
   likes: number;
   favorite: number
 }
