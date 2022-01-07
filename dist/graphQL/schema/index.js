@@ -269,11 +269,6 @@ const schema = (0, apollo_server_core_1.gql) `
 
   input publicationData {
     appartment: String
-    publisher: String
-    createdBy: String
-    createdAt: String
-    date: String
-    status: String
     isNew: Boolean
     views: Int
   }

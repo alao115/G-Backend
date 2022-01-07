@@ -267,11 +267,6 @@ const schema = gql`
 
   input publicationData {
     appartment: String
-    publisher: String
-    createdBy: String
-    createdAt: String
-    date: String
-    status: String
     isNew: Boolean
     views: Int
   }
