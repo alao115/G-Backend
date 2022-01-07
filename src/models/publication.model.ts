@@ -20,21 +20,22 @@ const publicationSchema = new Schema<Publication, Model<Publication>, Publicatio
   createdBy: String,
   createdAt: String,
   date: {
-    type: String,
-    required: true,
+    type: Number,
+    default: moment().unix()
+    // required: true,
   },
   status: {
     type: String,
-    required: true,
-  },
-  views: {
-    type: Number,
-    default: 0
+    default: ''
   },
   // isNew: {
   //   type: Boolean,
   //   default: true
   // },
+  views: {
+    type: Number,
+    default: 0
+  }
 }, {
   timestamps: { currentTime: () => moment().unix() }
 })
