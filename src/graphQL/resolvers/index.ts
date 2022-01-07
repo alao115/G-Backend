@@ -72,7 +72,7 @@ export default {
   },
   Publication: {
     appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
-      return appartmentService.findById({ id: parent.appartment })
+      return appartmentService.findByID({ id: parent.appartment })
     },
     publisher (parent: any, args: any, { accountService, res }: { accountService: any, res: any}, info: any) {
       return accountService.findOne({ user: parent.publisher })
