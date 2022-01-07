@@ -255,8 +255,8 @@ const schema = gql`
 
   type Publication {
     id: ID!
-    appartment: String
-    publisher: String
+    appartment: Appartment
+    publisher: Account
     createdBy: String
     createdAt: String
     date: String
@@ -267,6 +267,9 @@ const schema = gql`
 
   input publicationData {
     appartment: String
+    publisher: String
+    date: String
+    status: String
     isNew: Boolean
     views: Int
   }

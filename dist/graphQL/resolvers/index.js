@@ -69,6 +69,14 @@ exports.default = {
             return res.locals.authUser;
         }
     },
+    Publication: {
+        appartment(parent, args, { appartmentService, res }, info) {
+            return appartmentService.findById({ id: parent.appartment });
+        },
+        publisher(parent, args, { accountService, res }, info) {
+            return accountService.findOne({ user: parent.publisher });
+        }
+    },
     Mutation: {
         createAccount(parent, { data }, { accountService }, info) {
             if (!data)
