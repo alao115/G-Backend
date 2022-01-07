@@ -70,6 +70,14 @@ export default {
       return res.locals.authUser
     }
   },
+  Publication: {
+    appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
+      return appartmentService.findById({ id: parent.appartment })
+    },
+    publisher (parent: any, args: any, { accountService, res }: { accountService: any, res: any}, info: any) {
+      return accountService.findOne({ user: parent.publisher })
+    }
+  },
   Mutation: {
     createAccount(parent: any, { data }: { data: any}, { accountService }: { accountService: any }, info: any) {
       if(!data) throw new UserInputError('Invalid account data')
