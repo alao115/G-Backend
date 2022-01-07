@@ -4,7 +4,7 @@ export default interface Publication {
   publisher: string;
   createdBy: string;
   createdAt: string;
-  date: string;
+  date: number;
   status: string;
   isNew: boolean;
   views: number;

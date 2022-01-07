@@ -146,10 +146,11 @@ exports.default = {
                 throw new apollo_server_core_1.UserInputError('Invalid reservation data');
             return reservationService.delete({ id: reservationId });
         },
-        createPublication(parent, { data }, { publicationService }, info) {
+        createPublication(parent, { data }, { publicationService, res }, info) {
             if (!data)
                 throw new apollo_server_core_1.UserInputError('Invalid publication data');
-            return publicationService.create(data);
+            const { authUser } = res.locals;
+            return publicationService.create(Object.assign(Object.assign({}, data), { createdBy: authUser.id, publisher: authUser.id }));
         },
         updatePublication(parent, { data, publicationId }, { publicationService }, info) {
             if (!data || !publicationId)

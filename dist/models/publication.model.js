@@ -23,17 +23,17 @@ const publicationSchema = new mongoose_1.Schema({
     createdBy: String,
     createdAt: String,
     date: {
-        type: String,
-        required: true,
+        type: Number,
+        default: (0, moment_1.default)().unix()
     },
     status: {
         type: String,
-        required: true,
+        default: ''
     },
     views: {
         type: Number,
         default: 0
-    },
+    }
 }, {
     timestamps: { currentTime: () => (0, moment_1.default)().unix() }
 });

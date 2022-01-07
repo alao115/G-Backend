@@ -1,4 +1,5 @@
 import { UserInputError } from "apollo-server-core"
+import { Request, Response } from 'express';
 
 export default {
   Query: {
@@ -136,9 +137,10 @@ export default {
       return reservationService.delete({ id: reservationId})
     },
 
-    createPublication(parent: any, { data }: { data: any}, { publicationService }: { publicationService: any }, info: any) {
+    createPublication(parent: any, { data }: { data: any}, { publicationService, res }: { publicationService: any, res: Response }, info: any) {
       if(!data) throw new UserInputError('Invalid publication data')
-      return publicationService.create(data)
+      const { authUser } = res.locals
+      return publicationService.create({ ...data, createdBy: authUser.id, publisher: authUser.id })
     },
     updatePublication(parent: any, { data, publicationId }: { data: any, publicationId: string }, { publicationService }: { publicationService: any }, info: any) {
       if(!data || !publicationId) throw new UserInputError('Invalid publication data')
