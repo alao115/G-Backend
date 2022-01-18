@@ -30,7 +30,7 @@ const schema = gql`
 
     createAppartment(data: appartmentData): Appartment!
     updateAppartment(appartmentId: ID!, data: appartmentData): Appartment!
-    deleteAppartment(appartmentId: ID!, data: appartmentData): Appartment!
+    deleteAppartment(appartmentId: ID!): Appartment
 
     createAppartmentDetail(data: appartmentDetailData): AppartmentDetail
     updateAppartmentDetail(appartmentDetailId: ID!, data: appartmentDetailData): AppartmentDetail
