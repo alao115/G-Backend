@@ -32,7 +32,7 @@ const schema = (0, apollo_server_core_1.gql) `
 
     createAppartment(data: appartmentData): Appartment!
     updateAppartment(appartmentId: ID!, data: appartmentData): Appartment!
-    deleteAppartment(appartmentId: ID!, data: appartmentData): Appartment!
+    deleteAppartment(appartmentId: ID!): Appartment
 
     createAppartmentDetail(data: appartmentDetailData): AppartmentDetail
     updateAppartmentDetail(appartmentDetailId: ID!, data: appartmentDetailData): AppartmentDetail

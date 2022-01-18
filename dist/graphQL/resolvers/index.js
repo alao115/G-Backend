@@ -89,7 +89,7 @@ exports.default = {
             return accountService.update({ id: accountId, data });
         },
         deleteAccount(parent, { data, accountId }, { accountService }, info) {
-            if (!data || !accountId)
+            if (!accountId)
                 throw new apollo_server_core_1.UserInputError('Invalid account data');
             return accountService.delete({ id: accountId });
         },
@@ -103,8 +103,8 @@ exports.default = {
                 throw new apollo_server_core_1.UserInputError('Invalid appartment data');
             return appartmentService.update({ id: appartmentId, data });
         },
-        deleteAppartment(parent, { data, appartmentId }, { appartmentService }, info) {
-            if (!data || !appartmentId)
+        deleteAppartment(parent, { appartmentId }, { appartmentService }, info) {
+            if (!appartmentId)
                 throw new apollo_server_core_1.UserInputError('Invalid appartment data');
             return appartmentService.delete({ id: appartmentId });
         },
@@ -120,7 +120,7 @@ exports.default = {
             return appartmentTypeService.update({ id: appartmentTypeId, data });
         },
         deleteAppartmentType(parent, { data, appartmentTypeId }, { appartmentTypeService }, info) {
-            if (!data || !appartmentTypeId)
+            if (!appartmentTypeId)
                 throw new apollo_server_core_1.UserInputError('Invalid appartment type data');
             return appartmentTypeService.delete({ id: appartmentTypeId });
         },
@@ -135,7 +135,7 @@ exports.default = {
             return appartmentDetailService.update({ id: appartmentDetailId, data });
         },
         deleteAppartmentDetail(parent, { data, appartmentDetailId }, { appartmentDetailService }, info) {
-            if (!data || !appartmentDetailId)
+            if (!appartmentDetailId)
                 throw new apollo_server_core_1.UserInputError('Invalid appartment detail data');
             return appartmentDetailService.delete({ id: appartmentDetailId });
         },
@@ -150,7 +150,7 @@ exports.default = {
             return reservationService.update({ id: reservationId, data });
         },
         deleteReservation(parent, { data, reservationId }, { reservationService }, info) {
-            if (!data || reservationId)
+            if (!reservationId)
                 throw new apollo_server_core_1.UserInputError('Invalid reservation data');
             return reservationService.delete({ id: reservationId });
         },
@@ -166,7 +166,7 @@ exports.default = {
             return publicationService.update({ id: publicationId, data });
         },
         deletePublication(parent, { data, publicationId }, { publicationService }, info) {
-            if (!data || !publicationId)
+            if (!publicationId)
                 throw new apollo_server_core_1.UserInputError('Invalid publication data');
             return publicationService.delete({ id: publicationId });
         },
@@ -181,7 +181,7 @@ exports.default = {
             return visitService.update({ id: visitId, data });
         },
         deleteVisit(parent, { data, visitId }, { visitService }, info) {
-            if (!data || !visitId)
+            if (!visitId)
                 throw new apollo_server_core_1.UserInputError('Invalid visit data');
             return visitService.delete({ id: visitId });
         },

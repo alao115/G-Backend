@@ -88,7 +88,7 @@ export default {
       return accountService.update({ id: accountId, data})
     },
     deleteAccount(parent: any, { data, accountId }: { data: any, accountId: string }, { accountService }: { accountService: any }, info: any) {
-      if(!data || !accountId) throw new UserInputError('Invalid account data')
+      if(!accountId) throw new UserInputError('Invalid account data')
       return accountService.delete({ id: accountId})
     },
 
@@ -100,8 +100,8 @@ export default {
       if(!data || !appartmentId) throw new UserInputError('Invalid appartment data')
       return appartmentService.update({ id: appartmentId, data})
     },
-    deleteAppartment(parent: any, { data, appartmentId }: { data: any, appartmentId: string }, { appartmentService }: { appartmentService: any }, info: any) {
-      if(!data || !appartmentId) throw new UserInputError('Invalid appartment data')
+    deleteAppartment(parent: any, { appartmentId }: { appartmentId: string }, { appartmentService }: { appartmentService: any }, info: any) {
+      if(!appartmentId) throw new UserInputError('Invalid appartment data')
       return appartmentService.delete({ id: appartmentId})
     },
 
@@ -115,7 +115,7 @@ export default {
       return appartmentTypeService.update({ id: appartmentTypeId, data})
     },
     deleteAppartmentType(parent: any, { data, appartmentTypeId }: { data: any, appartmentTypeId: string }, { appartmentTypeService }: { appartmentTypeService: any }, info: any) {
-      if(!data || !appartmentTypeId) throw new UserInputError('Invalid appartment type data')
+      if(!appartmentTypeId) throw new UserInputError('Invalid appartment type data')
       return appartmentTypeService.delete({ id: appartmentTypeId})
     },
 
@@ -128,7 +128,7 @@ export default {
       return appartmentDetailService.update({ id: appartmentDetailId, data})
     },
     deleteAppartmentDetail(parent: any, { data, appartmentDetailId }: { data: any, appartmentDetailId: string }, { appartmentDetailService }: { appartmentDetailService: any }, info: any) {
-      if(!data || !appartmentDetailId) throw new UserInputError('Invalid appartment detail data')
+      if(!appartmentDetailId) throw new UserInputError('Invalid appartment detail data')
       return appartmentDetailService.delete({ id: appartmentDetailId})
     },
 
@@ -141,7 +141,7 @@ export default {
       return reservationService.update({ id: reservationId, data})
     },
     deleteReservation(parent: any, { data, reservationId }: { data: any, reservationId: string }, { reservationService }: { reservationService: any }, info: any) {
-      if(!data ||  reservationId) throw new UserInputError('Invalid reservation data')
+      if(!reservationId) throw new UserInputError('Invalid reservation data')
       return reservationService.delete({ id: reservationId})
     },
 
@@ -155,7 +155,7 @@ export default {
       return publicationService.update({ id: publicationId, data})
     },
     deletePublication(parent: any, { data, publicationId }: { data: any, publicationId: string }, { publicationService }: { publicationService: any }, info: any) {
-      if(!data || !publicationId) throw new UserInputError('Invalid publication data')
+      if(!publicationId) throw new UserInputError('Invalid publication data')
       return publicationService.delete({ id: publicationId})
     },
 
@@ -168,7 +168,7 @@ export default {
       return visitService.update({ id: visitId, data})
     },
     deleteVisit(parent: any, { data, visitId }: { data: any, visitId: string }, { visitService }: { visitService: any }, info: any) {
-      if(!data || !visitId) throw new UserInputError('Invalid visit data')
+      if(!visitId) throw new UserInputError('Invalid visit data')
       return visitService.delete({ id: visitId})
     },
   }
