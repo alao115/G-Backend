@@ -27,11 +27,11 @@ const schema = (0, apollo_server_core_1.gql) `
 
   type Mutation {
     createAccount(data: accountData): Account!
-    updateAccount(accountId: ID!, data: accountData): Account!
-    deleteAccount(accountId: ID!, data: accountData): Account!
+    updateAccount(accountId: ID!, data: accountData): Account
+    deleteAccount(accountId: ID!, data: accountData): Account
 
     createAppartment(data: appartmentData): Appartment!
-    updateAppartment(appartmentId: ID!, data: appartmentData): Appartment!
+    updateAppartment(appartmentId: ID!, data: appartmentData): Appartment
     deleteAppartment(appartmentId: ID!): Appartment
 
     createAppartmentDetail(data: appartmentDetailData): AppartmentDetail
@@ -43,16 +43,16 @@ const schema = (0, apollo_server_core_1.gql) `
     deleteAppartmentType(appartmentTypeId: ID!, data: appartmentTypeData): AppartmentType
 
     createPublication(data: publicationData): Publication!
-    updatePublication(publicationId: ID!, data: publicationData): Publication!
-    deletePublication(publicationId: ID!, data: publicationData): Publication!
+    updatePublication(publicationId: ID!, data: publicationData): Publication
+    deletePublication(publicationId: ID!, data: publicationData): Publication
 
     createReservation(data: reservationData): Reservation!
-    updateReservation(reservationId: ID!, data: reservationData): Reservation!
-    deleteReservation(reservationId: ID!, data: reservationData): Reservation!
+    updateReservation(reservationId: ID!, data: reservationData): Reservation
+    deleteReservation(reservationId: ID!, data: reservationData): Reservation
 
     createVisit(data: visitData): Visit!
-    updateVisit(visitId: ID!, data: visitData): Visit!
-    deleteVisit(visitId: ID!, data: visitData): Visit!
+    updateVisit(visitId: ID!, data: visitData): Visit
+    deleteVisit(visitId: ID!, data: visitData): Visit
   }
 
   type User {
