@@ -21,7 +21,10 @@ const publicationSchema = new Schema<Publication, Model<Publication>, Publicatio
   createdAt: String,
   date: {
     type: Number,
-    default: moment().unix()
+    default: moment().unix(),
+    get(v: moment.MomentInput) {
+      return moment(v).format('YYYY-MM-DD')
+    }
     // required: true,
   },
   status: {
