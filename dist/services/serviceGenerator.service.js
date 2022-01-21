@@ -105,6 +105,16 @@ let serviceGenerator = class serviceGenerator {
             }
         });
     }
+    deleteMany(condions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield this.Model.deleteMany(Object.assign({}, condions));
+            }
+            catch (error) {
+                throw error;
+            }
+        });
+    }
 };
 serviceGenerator = __decorate([
     (0, typedi_1.Service)('serviceGenerator')

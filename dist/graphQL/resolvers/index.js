@@ -103,10 +103,10 @@ exports.default = {
                 throw new apollo_server_core_1.UserInputError('Invalid appartment data');
             return appartmentService.update({ id: appartmentId, data });
         },
-        deleteAppartment(parent, { appartmentId }, { appartmentService }, info) {
+        deleteAppartment(parent, { appartmentId }, { appartmentService, publicationService }, info) {
             if (!appartmentId)
                 throw new apollo_server_core_1.UserInputError('Invalid appartment data');
-            return appartmentService.delete({ id: appartmentId });
+            return publicationService.deleteMany({ appartment: appartmentId }).then(() => appartmentService.delete({ id: appartmentId }));
         },
         createAppartmentType(parent, { data }, { appartmentTypeService }, info) {
             if (!data)

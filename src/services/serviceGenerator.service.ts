@@ -60,6 +60,12 @@ export default class serviceGenerator<T extends Model<any>> {
       return entity;
     } catch (error) { throw error; }
   }
+
+  async deleteMany(condions: any) {
+    try {
+      return await this.Model.deleteMany({ ...condions })
+    } catch (error) { throw error }
+  }
 };
 // new ContainerInstance('gh').
 // Container.set('serviceGenerator', 'entityService')

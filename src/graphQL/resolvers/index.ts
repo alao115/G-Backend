@@ -100,9 +100,10 @@ export default {
       if(!data || !appartmentId) throw new UserInputError('Invalid appartment data')
       return appartmentService.update({ id: appartmentId, data})
     },
-    deleteAppartment(parent: any, { appartmentId }: { appartmentId: string }, { appartmentService }: { appartmentService: any }, info: any) {
+    deleteAppartment(parent: any, { appartmentId }: { appartmentId: string }, { appartmentService, publicationService }: { appartmentService: any, publicationService: any }, info: any) {
       if(!appartmentId) throw new UserInputError('Invalid appartment data')
-      return appartmentService.delete({ id: appartmentId})
+
+      return publicationService.deleteMany({ appartment: appartmentId }).then(() => appartmentService.delete({ id: appartmentId}))
     },
 
     createAppartmentType(parent: any, { data }: { data: any}, { appartmentTypeService }: { appartmentTypeService: any }, info: any) {

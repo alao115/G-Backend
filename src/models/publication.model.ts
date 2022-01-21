@@ -25,7 +25,6 @@ const publicationSchema = new Schema<Publication, Model<Publication>, Publicatio
     get(v: moment.MomentInput) {
       return moment(v).format('YYYY-MM-DD')
     }
-    // required: true,
   },
   status: {
     type: String,
