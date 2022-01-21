@@ -24,7 +24,10 @@ const publicationSchema = new mongoose_1.Schema({
     createdAt: String,
     date: {
         type: Number,
-        default: (0, moment_1.default)().unix()
+        default: (0, moment_1.default)().unix(),
+        get(v) {
+            return (0, moment_1.default)(v).format('YYYY-MM-DD');
+        }
     },
     status: {
         type: String,
