@@ -1,5 +1,6 @@
 import { UserInputError } from "apollo-server-core"
 import { Request, Response } from 'express';
+import Reservation from '../../types/reservations';
 
 export default {
   Query: {
@@ -78,6 +79,23 @@ export default {
       return accountService.findOne({ user: parent.publisher })
     }
   },
+  // Reservation: {
+  //   appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
+  //     return appartmentService.findByID({ id: parent.appartment })
+  //   },
+  //   user (parent: any, args: any, { accountService, res }: { accountService: any, res: any}, info: any) {
+  //     return accountService.findOne({ user: parent.user })
+  //   }
+  // },
+  // Visit: {
+  //   appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
+  //     return appartmentService.findByID({ id: parent.appartment })
+  //   },
+  //   user (parent: any, args: any, { accountService, res }: { accountService: any, res: any}, info: any) {
+  //     return accountService.findOne({ user: parent.user })
+  //   }
+  // },
+
   Mutation: {
     createAccount(parent: any, { data }: { data: any}, { accountService }: { accountService: any }, info: any) {
       if(!data) throw new UserInputError('Invalid account data')
