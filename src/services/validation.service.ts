@@ -4,27 +4,17 @@ import { RequestHandler, Request, Response, NextFunction } from 'express';
 
 export default class ValidationManager {
 
-  schemas = {
-    signup: Joi.object({
-      email: Joi.string().email().required(),
-      firstname: Joi.string().required(),
-      lastname: Joi.string().required(),
-      password: Joi.string().min(8).required()
-    }),
+  schemas() {
+    return {
+      fileUpload: Joi.object({
+        filePath: Joi.string().required(),
+        file: Joi.binary().required(),
+      }),
 
-    signin: Joi.object({
-      email: Joi.string().email().required(),
-      password: Joi.string().min(8).required()
-    }),
-
-    refreshToken: Joi.object({
-      'refresh-token': Joi.string().required()
-    }),
-
-    resetPassword: Joi.object({
-      email: Joi.string().email().required(),
-    })
-
+      fileDownloadDeletion: Joi.object({
+        filePath: Joi.string().required(),
+      }),
+    }
   }
 
   validationHelper(schema: any) {
