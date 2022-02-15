@@ -3,7 +3,10 @@ import AuthService from './Auth.service'
 import ValidationManager from './validation.service'
 import RedisClientManager from './redisClient.service'
 import serviceGeneratorService from './serviceGenerator.service'
+import firebaseStorageManager from './firebase.storage.service'
+
 import { User, Account, Appartment, AppartmentDetail, Publication, Reservation, Visit, AppartmentType } from "../models"
+import firebaseApp from '../loaders/firebase'
 
 
 const RedisClientService = new RedisClientManager()
@@ -30,6 +33,8 @@ const AuthManager = new AuthService(JWTService, userService, accountService)
 
 const validationService = new ValidationManager()
 
+const firebaseStorageService = new (firebaseStorageManager({ firebaseAdmin: firebaseApp.admin }))()
+
 
 export {
   RedisClientService as RedisClientManager,
@@ -44,5 +49,6 @@ export {
   visitService,
   AuthManager,
   ValidationManager,
-  validationService
+  validationService,
+  firebaseStorageService
 }

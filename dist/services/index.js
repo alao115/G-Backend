@@ -3,14 +3,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validationService = exports.ValidationManager = exports.AuthManager = exports.visitService = exports.reservationService = exports.publicationService = exports.appartmentTypeService = exports.appartmentDetailService = exports.appartmentService = exports.accountService = exports.userService = exports.JWTService = exports.RedisClientManager = void 0;
+exports.firebaseStorageService = exports.validationService = exports.ValidationManager = exports.AuthManager = exports.visitService = exports.reservationService = exports.publicationService = exports.appartmentTypeService = exports.appartmentDetailService = exports.appartmentService = exports.accountService = exports.userService = exports.JWTService = exports.RedisClientManager = void 0;
 const JWT_service_1 = __importDefault(require("./JWT.service"));
 const Auth_service_1 = __importDefault(require("./Auth.service"));
 const validation_service_1 = __importDefault(require("./validation.service"));
 exports.ValidationManager = validation_service_1.default;
 const redisClient_service_1 = __importDefault(require("./redisClient.service"));
 const serviceGenerator_service_1 = __importDefault(require("./serviceGenerator.service"));
+const firebase_storage_service_1 = __importDefault(require("./firebase.storage.service"));
 const models_1 = require("../models");
+const firebase_1 = __importDefault(require("../loaders/firebase"));
 const RedisClientService = new redisClient_service_1.default();
 exports.RedisClientManager = RedisClientService;
 const userService = new serviceGenerator_service_1.default(models_1.User);
@@ -35,3 +37,5 @@ const AuthManager = new Auth_service_1.default(JWTService, userService, accountS
 exports.AuthManager = AuthManager;
 const validationService = new validation_service_1.default();
 exports.validationService = validationService;
+const firebaseStorageService = new ((0, firebase_storage_service_1.default)({ firebaseAdmin: firebase_1.default.admin }))();
+exports.firebaseStorageService = firebaseStorageService;

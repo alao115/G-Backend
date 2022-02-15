@@ -15,24 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const joi_1 = __importDefault(require("joi"));
 const http_errors_1 = __importDefault(require("http-errors"));
 class ValidationManager {
-    constructor() {
-        this.schemas = {
-            signup: joi_1.default.object({
-                email: joi_1.default.string().email().required(),
-                firstname: joi_1.default.string().required(),
-                lastname: joi_1.default.string().required(),
-                password: joi_1.default.string().min(8).required()
+    schemas() {
+        return {
+            fileUpload: joi_1.default.object({
+                filePath: joi_1.default.string().required(),
+                file: joi_1.default.binary().required(),
             }),
-            signin: joi_1.default.object({
-                email: joi_1.default.string().email().required(),
-                password: joi_1.default.string().min(8).required()
+            fileDownloadDeletion: joi_1.default.object({
+                filePath: joi_1.default.string().required(),
             }),
-            refreshToken: joi_1.default.object({
-                'refresh-token': joi_1.default.string().required()
-            }),
-            resetPassword: joi_1.default.object({
-                email: joi_1.default.string().email().required(),
-            })
         };
     }
     validationHelper(schema) {
