@@ -24,7 +24,7 @@ exports.default = ({ firebaseStorageService }) => class firebaseStorageControlle
         });
         this.download = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const { filePath } = res.locals.payload.validatedData;
+                const { filePath } = res.locals.validatedData;
                 const file = yield firebaseStorageService.download({ filePath });
                 res.send({ success: 1, data: { file } });
             }
@@ -34,7 +34,7 @@ exports.default = ({ firebaseStorageService }) => class firebaseStorageControlle
         });
         this.delete = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const { filePath } = res.locals.payload.validatedData;
+                const { filePath } = res.locals.validatedData;
                 if (!filePath)
                     throw new Error('File path is missing');
                 const file = yield firebaseStorageService.delete({ filePath });

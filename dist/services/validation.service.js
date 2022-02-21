@@ -24,6 +24,10 @@ class ValidationManager {
             fileDownloadDeletion: joi_1.default.object({
                 filePath: joi_1.default.string().required(),
             }),
+            signin: joi_1.default.object({
+                email: joi_1.default.string().email().required(),
+                password: joi_1.default.string().required()
+            })
         };
     }
     validationHelper(schema) {

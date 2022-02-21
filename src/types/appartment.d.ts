@@ -1,6 +1,10 @@
 export default interface Appartment {
   id: string;
   mainImg: string;
+  firstImg: string;
+  secondImg: string;
+  thirdImg: string;
+  fourthImg: string;
   appartmentType: string;
   isFurnished: boolean;
   location: string;

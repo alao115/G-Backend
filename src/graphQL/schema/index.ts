@@ -124,6 +124,10 @@ const schema = gql`
   type Appartment {
     id: ID!
     mainImg: String
+    firstImg: String
+    secondImg: String
+    thirdImg: String
+    fourthImg: String
     appartmentType: String
     isFurnished: Boolean
     location: String
@@ -167,6 +171,10 @@ const schema = gql`
   }
   input appartmentData {
     mainImg: String
+    firstImg: String
+    secondImg: String
+    thirdImg: String
+    fourthImg: String
     appartmentType: String
     isFurnished: Boolean
     location: String

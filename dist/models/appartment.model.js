@@ -16,6 +16,22 @@ const appartmentSchema = new mongoose_1.Schema({
         type: String,
         default: ''
     },
+    firstImg: {
+        type: String,
+        default: ''
+    },
+    secondImg: {
+        type: String,
+        default: ''
+    },
+    thirdImg: {
+        type: String,
+        default: ''
+    },
+    fourthImg: {
+        type: String,
+        default: ''
+    },
     appartmentType: {
         type: String,
         required: true

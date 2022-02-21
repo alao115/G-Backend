@@ -126,6 +126,10 @@ const schema = (0, apollo_server_core_1.gql) `
   type Appartment {
     id: ID!
     mainImg: String
+    firstImg: String
+    secondImg: String
+    thirdImg: String
+    fourthImg: String
     appartmentType: String
     isFurnished: Boolean
     location: String
@@ -169,6 +173,10 @@ const schema = (0, apollo_server_core_1.gql) `
   }
   input appartmentData {
     mainImg: String
+    firstImg: String
+    secondImg: String
+    thirdImg: String
+    fourthImg: String
     appartmentType: String
     isFurnished: Boolean
     location: String
