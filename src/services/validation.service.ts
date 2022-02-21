@@ -14,6 +14,11 @@ export default class ValidationManager {
       fileDownloadDeletion: Joi.object({
         filePath: Joi.string().required(),
       }),
+
+      signin: Joi.object({
+        email: Joi.string().email().required(),
+        password: Joi.string().required()
+      })
     }
   }
 

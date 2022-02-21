@@ -9,41 +9,23 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
       return this._id;
     }
   },
-  // owner: {
-  //   type: String,
-  //   required: true,
-  // },
-  // tenant: {
-  //   type: String,
-  //   required: true,
-  // },
-  // createdBy: String,
-  // createdAt: String,
-  // location: {
-  //   type: String,
-  //   required: true,
-  // },
-  // rent: {
-  //   type: Number,
-  //   required: true,
-  // },
-  // status: {
-  //   type: String,
-  //   required: true,
-  // },
-  // advancePayment: {
-  //   type: Number,
-  //   required: true,
-  // },
-  // energyCommision: {
-  //   type: Number,
-  //   required: true,
-  // },
-  // numberOffPrepaidMonths: {
-  //   type: Number,
-  //   required: true,
-  // },
   mainImg: {
+    type: String,
+    default: ''
+  },
+  firstImg: {
+    type: String,
+    default: ''
+  },
+  secondImg: {
+    type: String,
+    default: ''
+  },
+  thirdImg: {
+    type: String,
+    default: ''
+  },
+  fourthImg: {
     type: String,
     default: ''
   },

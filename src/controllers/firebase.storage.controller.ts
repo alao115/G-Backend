@@ -10,7 +10,6 @@ export default ({ firebaseStorageService }: { firebaseStorageService: any }) => 
       const { filePath } = res.locals.validatedData;
       const { file } = req;
 
-      // console.log(filePath, file);
       const fileInfo = await firebaseStorageService.upload({ filePath, file });
 
       res.send({ success: 1, data: { fileInfo } });
@@ -19,7 +18,7 @@ export default ({ firebaseStorageService }: { firebaseStorageService: any }) => 
 
   download: RequestHandler = async (req, res, next) => {
     try {
-      const { filePath } = res.locals.payload.validatedData;
+      const { filePath } = res.locals.validatedData;
       const file = await firebaseStorageService.download({ filePath });
 
       res.send({ success: 1, data: { file } });
@@ -28,7 +27,7 @@ export default ({ firebaseStorageService }: { firebaseStorageService: any }) => 
 
   delete: RequestHandler = async (req, res, next) => {
     try {
-      const { filePath } = res.locals.payload.validatedData;
+      const { filePath } = res.locals.validatedData;
 
       if (!filePath) throw new Error('File path is missing');
 
