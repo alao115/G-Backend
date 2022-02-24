@@ -11,6 +11,6 @@ const router = (0, express_1.default)();
 exports.default = ({ app, ValidationManager, JWTManager }) => {
     app.use('/storage', router);
     router.post('/upload', uploadMiddleware.single('file'), ValidationManager.validationHelper(ValidationManager.schemas().fileUpload), controllers_1.firebaseStorageController.upload);
-    router.get('/download', ValidationManager.validationHelper(ValidationManager.schemas().fileDownloadDeletion), controllers_1.firebaseStorageController.download);
+    router.post('/download', ValidationManager.validationHelper(ValidationManager.schemas().fileDownloadDeletion), controllers_1.firebaseStorageController.download);
     router.post('/delete', ValidationManager.validationHelper(ValidationManager.schemas().fileDownloadDeletion), controllers_1.firebaseStorageController.delete);
 };

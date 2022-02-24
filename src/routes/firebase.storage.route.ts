@@ -20,7 +20,7 @@ export default ({ app, ValidationManager, JWTManager }: { app: any, ValidationMa
 
   router.post('/upload', uploadMiddleware.single('file'), ValidationManager.validationHelper(ValidationManager.schemas().fileUpload), firebaseStorageController.upload);
 
-  router.get('/download', ValidationManager.validationHelper(ValidationManager.schemas().fileDownloadDeletion), firebaseStorageController.download);
+  router.post('/download', ValidationManager.validationHelper(ValidationManager.schemas().fileDownloadDeletion), firebaseStorageController.download);
 
   router.post('/delete', ValidationManager.validationHelper(ValidationManager.schemas().fileDownloadDeletion), firebaseStorageController.delete);
 };
