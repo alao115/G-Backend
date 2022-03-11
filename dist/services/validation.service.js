@@ -27,6 +27,12 @@ class ValidationManager {
             signin: joi_1.default.object({
                 email: joi_1.default.string().email().required(),
                 password: joi_1.default.string().required()
+            }),
+            signup: joi_1.default.object({
+                email: joi_1.default.string().email().required(),
+                password: joi_1.default.string().required(),
+                firstname: joi_1.default.string().required(),
+                lastname: joi_1.default.string().required()
             })
         };
     }

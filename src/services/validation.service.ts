@@ -18,7 +18,16 @@ export default class ValidationManager {
       signin: Joi.object({
         email: Joi.string().email().required(),
         password: Joi.string().required()
+      }),
+
+      signup: Joi.object({
+	      email: Joi.string().email().required(),
+	      password: Joi.string().required(),
+        firstname: Joi.string().required(),
+        lastname: Joi.string().required()
       })
+
+
     }
   }
 
