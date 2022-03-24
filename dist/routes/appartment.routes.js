@@ -7,6 +7,6 @@ const express_1 = __importDefault(require("express"));
 const router = (0, express_1.default)();
 exports.default = ({ app, AppartmentController }) => {
     app.use('/appartments/', router);
-    router.post('/', AppartmentController.getAllAppartment);
-    router.post('/appartmenttypes', AppartmentController.getAllAppartmentType);
+    router.get('/', AppartmentController.getAllAppartment);
+    router.get('/appartmenttypes', AppartmentController.getAllAppartmentType);
 };
