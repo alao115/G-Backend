@@ -22,7 +22,7 @@ const userSchema = new Schema<User, Model<User>, User>({
   userType: {
     type: Number,
     // required: true
-    default: 1
+    default: 2
   },
   createdAt: String,
   updatedAt: String

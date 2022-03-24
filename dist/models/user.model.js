@@ -24,7 +24,7 @@ const userSchema = new mongoose_1.Schema({
     },
     userType: {
         type: Number,
-        default: 1
+        default: 2
     },
     createdAt: String,
     updatedAt: String
