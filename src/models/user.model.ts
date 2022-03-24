@@ -19,6 +19,11 @@ const userSchema = new Schema<User, Model<User>, User>({
     type: String,
     required: true,
   },
+  userType: {
+    type: Number,
+    // required: true
+    default: 1
+  },
   createdAt: String,
   updatedAt: String
 }, { timestamps: { currentTime: () => moment().unix() } })
