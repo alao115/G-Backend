@@ -1,10 +1,8 @@
 import Router, { Express } from 'express'
 
-import { AuthController } from '../controllers'
-
 const router = Router()
 
-export default ({ app, ValidationManager }: { app: Express; ValidationManager: any; }) => {
+export default ({ app, ValidationManager, AuthController }: { app: Express; ValidationManager: any; AuthController: any }) => {
     app.use('/auth/', router)
 
     router.post('/signup', ValidationManager.validationHelper(ValidationManager.schemas().signup), AuthController.signUp)
