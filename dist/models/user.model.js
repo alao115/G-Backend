@@ -22,6 +22,10 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
+    userType: {
+        type: Number,
+        default: 1
+    },
     createdAt: String,
     updatedAt: String
 }, { timestamps: { currentTime: () => (0, moment_1.default)().unix() } });
