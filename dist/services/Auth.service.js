@@ -37,7 +37,6 @@ let AuthManager = class AuthManager {
                 const hashedPassword = yield argon2_1.default.hash(password);
                 const user = yield this.userService.create(Object.assign(Object.assign({}, data), { password: hashedPassword }));
                 const account = yield this.accountService.create(Object.assign(Object.assign({}, data), { user: user.id }));
-                console.log('Account: ', account);
                 const accessToken = yield this.JWTManager.signToken(user.id);
                 const refreshToken = yield this.JWTManager.signRefreshToken(user.id);
                 return Object.freeze(Object.assign(Object.assign({}, accessToken), { refreshToken }));

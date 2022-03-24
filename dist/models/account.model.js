@@ -25,7 +25,7 @@ const accountSchema = new mongoose_1.Schema({
     },
     userType: {
         type: Number,
-        default: 0
+        default: 1
     },
     status: {
         type: String,
