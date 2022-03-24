@@ -27,7 +27,7 @@ export default class AuthManager {
 
       // Create user account
       const account = await this.accountService.create({ ...data, user: user.id})
-      console.log('Account: ', account)
+      // console.log('Account: ', account)
 
       //Generate accessToken and refreshToken
       const accessToken = await this.JWTManager.signToken(user.id);

@@ -26,8 +26,6 @@ export default class ValidationManager {
         firstname: Joi.string().required(),
         lastname: Joi.string().required()
       })
-
-
     }
   }
 
