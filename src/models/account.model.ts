@@ -23,7 +23,7 @@ const accountSchema = new Schema<Account, Model<Account>, Account>({
   userType: {
     type: Number,
     // required: true
-    default: 0
+    default: 1
   },
   status: {
     type: String,
