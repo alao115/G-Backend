@@ -5,15 +5,13 @@ import Router from 'express';
 
 import multer from 'multer';
 
-import { firebaseStorageController } from '../controllers';
-
 const uploadMiddleware = multer({
   /* storage, */
 });
 
 const router = Router();
 
-export default ({ app, ValidationManager, JWTManager }: { app: any, ValidationManager: any, JWTManager: any }) => {
+export default ({ app, ValidationManager, JWTManager, firebaseStorageController }: { app: any, ValidationManager: any, JWTManager: any; firebaseStorageController: any }) => {
   app.use('/storage', router);
 
   // router.use(JWTManager.verifyAccessToken);

@@ -1,10 +1,8 @@
 import Router, { Express } from 'express'
 
-import { UserController } from '../controllers'
-
 const router = Router()
 
-export default ({ app, ValidationManager, JWTService }: { app: Express; ValidationManager: any; JWTService: any; }) => {
+export default ({ app, ValidationManager, JWTService, UserController }: { app: Express; ValidationManager: any; JWTService: any; UserController: any }) => {
 	app.use('/users', router)
 
 	router.use(JWTService.verifyAccessToken)
