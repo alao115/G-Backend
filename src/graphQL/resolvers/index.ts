@@ -159,7 +159,7 @@ export default {
       return reservationService.create(data)
     },
     updateReservation(parent: any, { data, reservationId }: { data: any, reservationId: string }, { reservationService }: { reservationService: any }, info: any) {
-      if(!data ||  reservationId) throw new UserInputError('Invalid reservation data')
+      if(!data || !reservationId) throw new UserInputError('Invalid reservation data')
       return reservationService.update({ id: reservationId, data})
     },
     deleteReservation(parent: any, { data, reservationId }: { data: any, reservationId: string }, { reservationService }: { reservationService: any }, info: any) {
