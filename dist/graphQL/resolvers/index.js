@@ -148,7 +148,7 @@ exports.default = {
             return reservationService.create(data);
         },
         updateReservation(parent, { data, reservationId }, { reservationService }, info) {
-            if (!data || reservationId)
+            if (!data || !reservationId)
                 throw new apollo_server_core_1.UserInputError('Invalid reservation data');
             return reservationService.update({ id: reservationId, data });
         },
