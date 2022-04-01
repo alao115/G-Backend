@@ -3,6 +3,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default {
+  frontendUrl: process.env.FRONTEND_URL || '',
+  emailHost: process.env.EMAIL_HOST || '',
+  emailPort: process.env.EMAIL_PORT || '',
+  emailSecure: process.env.EMAIL_SECURE || false,
+  emailUser: process.env.EMAIL_USER || '',
+  emailPassword: process.env.EMAIL_PASSWORD || '',
   environment: process.env.APP_ENV || 'development',
   hostname: process.env.APP_HOSTNAME || '127.0.0.1',
   port: process.env.APP_PORT || 7000,

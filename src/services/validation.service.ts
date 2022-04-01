@@ -25,7 +25,27 @@ export default class ValidationManager {
 	      password: Joi.string().required(),
         firstname: Joi.string().required(),
         lastname: Joi.string().required()
-      })
+      }),
+
+      mailVerification: Joi.object({
+        email: Joi.string().email().required()
+      }),
+
+      refreshToken: Joi.object({
+        'refresh-token': Joi.string().required(),
+      }),
+
+      passwordRecoveryToken: Joi.object({
+        'password-recovery-token': Joi.string().required(),
+      }),
+
+      emailVerification: Joi.object({
+        'email-token': Joi.string().required(),
+      }),
+
+      resetPassword: Joi.object({
+        email: Joi.string().email().required(),
+      }),
     }
   }
 

@@ -26,6 +26,10 @@ const userSchema = new mongoose_1.Schema({
         type: Number,
         default: 2
     },
+    emailVerified: {
+        type: Boolean,
+        default: false
+    },
     createdAt: String,
     updatedAt: String
 }, { timestamps: { currentTime: () => (0, moment_1.default)().unix() } });

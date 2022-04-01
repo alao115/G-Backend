@@ -32,7 +32,7 @@ let JWTManager = class JWTManager {
         this.redisClientManager = redisClientManager;
         this.userService = userService;
         this.signToken = (userID) => {
-            const privateKey = fs_1.default.readFileSync(path_1.default.join("dist/keys", "private.pem"), "utf-8");
+            const privateKey = fs_1.default.readFileSync(path_1.default.join("dist/keys", "gontche_private.pem"), "utf-8");
             const payload = {};
             const options = {
                 audience: String(userID),
@@ -53,7 +53,7 @@ let JWTManager = class JWTManager {
             if (!authHeader)
                 return next(new http_errors_1.default.Unauthorized());
             const token = authHeader.replace('Bearer', '').replace('Bearer', '').trim();
-            const publicKey = fs_1.default.readFileSync(path_1.default.join("dist/keys", "public.pem"), "utf-8");
+            const publicKey = fs_1.default.readFileSync(path_1.default.join("dist/keys", "gontche_public.pem"), "utf-8");
             jsonwebtoken_1.default.verify(token, publicKey, (err, payload) => __awaiter(this, void 0, void 0, function* () {
                 if (err) {
                     const message = err.name === "JsonWebTokenError" ? "Unauthorized" : err.name;
@@ -67,7 +67,7 @@ let JWTManager = class JWTManager {
             }));
         };
         this.signRefreshToken = (userID) => {
-            const privateKey = fs_1.default.readFileSync(path_1.default.join("dist/keys", "private_refresh.pem"), "utf-8");
+            const privateKey = fs_1.default.readFileSync(path_1.default.join("dist/keys", "gontche_private_refresh.pem"), "utf-8");
             const payload = {};
             const options = {
                 audience: String(userID),
@@ -90,7 +90,7 @@ let JWTManager = class JWTManager {
             });
         };
         this.refreshTokenVerification = ({ refreshToken }) => __awaiter(this, void 0, void 0, function* () {
-            const publicKey = fs_1.default.readFileSync(path_1.default.join("dist/keys", "public_refresh.pem"), "utf-8");
+            const publicKey = fs_1.default.readFileSync(path_1.default.join("dist/keys", "gontche_public_refresh.pem"), "utf-8");
             return new Promise((resolve, reject) => {
                 jsonwebtoken_1.default.verify(refreshToken, publicKey, (err, payload) => __awaiter(this, void 0, void 0, function* () {
                     if (err) {
@@ -102,6 +102,86 @@ let JWTManager = class JWTManager {
                         if (result !== refreshToken)
                             reject(new http_errors_1.default.Unauthorized());
                         resolve(userID);
+                    }
+                    catch (err) {
+                        reject(new http_errors_1.default.InternalServerError());
+                    }
+                }));
+            });
+        });
+    }
+    emailVerificationTokenGen({ email }) {
+        const privateKey = fs_1.default.readFileSync(path_1.default.join('dist/keys', 'gontche_email_verification_private_key.pem'), 'utf-8');
+        const payload = {};
+        const options = {
+            audience: email,
+            expiresIn: '1d',
+            algorithm: 'RS256',
+        };
+        return new Promise((resolve, reject) => {
+            jsonwebtoken_1.default.sign(payload, privateKey, options, (err, emailToken) => {
+                if (err) {
+                    console.log(err);
+                    reject(new http_errors_1.default.InternalServerError());
+                }
+                resolve({ emailToken });
+            });
+        });
+    }
+    verifyEmailVerificationToken({ emailVerificationToken }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const publicKey = fs_1.default.readFileSync(path_1.default.join('dist/keys', 'gontche_email_verification_public_key.pem'), 'utf-8');
+            return new Promise((resolve, reject) => {
+                jsonwebtoken_1.default.verify(emailVerificationToken, publicKey, (err, payload) => __awaiter(this, void 0, void 0, function* () {
+                    if (err) {
+                        return reject(new http_errors_1.default.Unauthorized());
+                    }
+                    try {
+                        const email = payload.aud;
+                        const isUserExist = yield this.userService.findByEmail({ email });
+                        if (!isUserExist)
+                            reject(new http_errors_1.default.Unauthorized());
+                        resolve(isUserExist);
+                    }
+                    catch (err) {
+                        reject(new http_errors_1.default.InternalServerError());
+                    }
+                }));
+            });
+        });
+    }
+    passwordRecoveryTokenGen({ email }) {
+        const privateKey = fs_1.default.readFileSync(path_1.default.join('keys', 'password_recovery_private_key.pem'), 'utf-8');
+        const payload = {};
+        const options = {
+            audience: email,
+            expiresIn: '1d',
+            algorithm: 'RS256',
+        };
+        return new Promise((resolve, reject) => {
+            jsonwebtoken_1.default.sign(payload, privateKey, options, (err, emailToken) => {
+                if (err) {
+                    console.log(err);
+                    reject(new http_errors_1.default.InternalServerError());
+                }
+                resolve({ emailToken });
+            });
+        });
+    }
+    verifyPasswordRecoveryToken({ passwordRecoveryToken }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const publicKey = fs_1.default.readFileSync(path_1.default.join('keys', 'gontche_password_recovery_public_key.pem'), 'utf-8');
+            return new Promise((resolve, reject) => {
+                jsonwebtoken_1.default.verify(passwordRecoveryToken, publicKey, (err, payload) => __awaiter(this, void 0, void 0, function* () {
+                    if (err) {
+                        return reject(new http_errors_1.default.Unauthorized());
+                    }
+                    try {
+                        const email = payload.aud;
+                        const isUserExist = yield this.userService.findByEmail({ email });
+                        if (!isUserExist)
+                            reject(new http_errors_1.default.Unauthorized());
+                        resolve(isUserExist);
                     }
                     catch (err) {
                         reject(new http_errors_1.default.InternalServerError());

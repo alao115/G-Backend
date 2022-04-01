@@ -24,6 +24,10 @@ const userSchema = new Schema<User, Model<User>, User>({
     // required: true
     default: 2
   },
+  emailVerified: {
+    type: Boolean,
+    default: false
+  },
   createdAt: String,
   updatedAt: String
 }, { timestamps: { currentTime: () => moment().unix() } })

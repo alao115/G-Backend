@@ -33,7 +33,22 @@ class ValidationManager {
                 password: joi_1.default.string().required(),
                 firstname: joi_1.default.string().required(),
                 lastname: joi_1.default.string().required()
-            })
+            }),
+            mailVerification: joi_1.default.object({
+                email: joi_1.default.string().email().required()
+            }),
+            refreshToken: joi_1.default.object({
+                'refresh-token': joi_1.default.string().required(),
+            }),
+            passwordRecoveryToken: joi_1.default.object({
+                'password-recovery-token': joi_1.default.string().required(),
+            }),
+            emailVerification: joi_1.default.object({
+                'email-token': joi_1.default.string().required(),
+            }),
+            resetPassword: joi_1.default.object({
+                email: joi_1.default.string().email().required(),
+            }),
         };
     }
     validationHelper(schema) {

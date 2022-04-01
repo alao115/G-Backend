@@ -20,12 +20,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const http_errors_1 = __importDefault(require("http-errors"));
 const argon2_1 = __importDefault(require("argon2"));
+const config_1 = __importDefault(require("../config"));
 const typedi_1 = require("typedi");
 let AuthManager = class AuthManager {
-    constructor(JWTManager, userService, accountService) {
+    constructor(JWTManager, userService, accountService, mailService) {
         this.JWTManager = JWTManager;
         this.userService = userService;
         this.accountService = accountService;
+        this.mailService = mailService;
     }
     signUp(data) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -93,6 +95,54 @@ let AuthManager = class AuthManager {
         });
     }
     ;
+    emailTokenVerification({ emailToken }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield this.JWTManager.verifyEmailVerificationToken({ emailVerificationToken: emailToken });
+                const response = yield this.userService.update({ id: user._id, data: { emailVerified: true } });
+                return Object.assign(Object.assign({}, user), response);
+            }
+            catch (error) {
+                throw error;
+            }
+        });
+    }
+    passwordRecoveryTokenVerification({ emailToken }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield this.JWTManager.verifyPasswordRecoveryToken({ emailVerificationToken: emailToken });
+                return user;
+            }
+            catch (error) {
+                throw error;
+            }
+        });
+    }
+    sendVerificationMail({ email, isPassword }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield this.userService.findByEmail({ email });
+                if (!user)
+                    throw new http_errors_1.default.NotFound('No such user found in our records');
+                const userAccount = yield this.accountService.findOne({ user: user.id });
+                const { emailToken } = isPassword ? yield this.JWTManager.passwordRecoveryTokenGen({ email }) : yield this.JWTManager.emailVerificationTokenGen({ email });
+                const verificationUrl = `${config_1.default.frontendUrl}/auth/signup/${!isPassword ? 'email-verified' : 'new-password'}?token=${emailToken}`, from = 'catch-all@rcg.studio', subject = isPassword ? 'Réinitialisation mot de passe.' : 'Vérification d\'adresse email', content = `
+        <div style=" display: flex; flex-direction: column; overflow-wrap: break-word; padding-bottom: 28px; width: 100%;">
+          <span _ngcontent-vhn-c70="" class="preview-label">Message</span><div _ngcontent-vhn-c70=""><p>Bonjour ${userAccount.firstname} ${userAccount.lastname},</p>
+          <p>Cliquez sur ce lien pour ${isPassword ? 'réinitialiser votre mot de passe.' : 'valider votre adresse e-mail.'}</p>
+          <p><a href="${verificationUrl}">${verificationUrl}</a></p>
+          <p>Si vous n'avez pas demandé à valider cette adresse, vous pouvez ignorer cet e-mail.</p>
+          <p>Merci,</p>
+        </div>`;
+                const response = yield this.mailService.sendMail({ from, to: user.email, content, subject });
+                console.log('Response: ', response);
+                return Object.assign(Object.assign({}, user), userAccount);
+            }
+            catch (error) {
+                throw error;
+            }
+        });
+    }
 };
 AuthManager = __decorate([
     (0, typedi_1.Service)('AuthManager')

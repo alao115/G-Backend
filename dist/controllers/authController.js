@@ -15,7 +15,8 @@ exports.default = ({ AuthManager }) => class AuthController {
             try {
                 const signupData = res.locals.validatedData;
                 const token = yield AuthManager.signUp(signupData);
-                res.send({ success: 1, data: Object.assign({}, token) });
+                const emailData = yield AuthManager.sendVerificationMail({ email: signupData.email, isPassword: false });
+                res.send({ success: 1, data: Object.assign({}, emailData) });
             }
             catch (err) {
                 next(err);
@@ -45,6 +46,40 @@ exports.default = ({ AuthManager }) => class AuthController {
             try {
             }
             catch (error) {
+                next(error);
+            }
+        });
+        this.emailVerification = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const emailToken = res.locals.validatedData['email-token'];
+                const response = yield AuthManager.emailTokenVerification({ emailToken });
+                res.send({ success: 1, data: { emailVerified: !!response.nModified } });
+            }
+            catch (err) {
+                next(err);
+            }
+        });
+        this.passwordRecoveryTokenVerification = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const passwordRecoveryToken = res.locals.validatedData['password-recovery-token'];
+                const response = yield AuthManager.passwordRecoveryTokenVerification({ passwordRecoveryToken });
+                res.send({ success: 1, data: { id: response.id } });
+            }
+            catch (error) {
+                console.log(error);
+                next(error);
+            }
+        });
+    }
+    sendVerificationMail({ isPassword } = { isPassword: false }) {
+        return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { email } = res.locals.validatedData;
+                yield AuthManager.sendVerificationMail({ email, isPassword });
+                res.send({ success: 1, message: 'Verification mail sent successfully' });
+            }
+            catch (error) {
+                console.log(error);
                 next(error);
             }
         });

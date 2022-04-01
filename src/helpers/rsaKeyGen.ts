@@ -7,6 +7,6 @@ const key = new nodeRsa({ b: 1024 })
 const public_key = key.exportKey('public')
 const private_key = key.exportKey('private')
 
-fs.writeFileSync(path.join('keys', 'public.pem'), public_key)
-fs.writeFileSync(path.join('keys', 'private.pem'), private_key)
+fs.writeFileSync(path.join('../keys', 'gontche_password_recovery_public_key.pem'), public_key)
+fs.writeFileSync(path.join('../keys', 'gontche_password_recovery_private_key.pem'), private_key)
 
