@@ -48,7 +48,7 @@ export default class serviceGenerator<T extends Model<any>> {
       if (!isEntityFound) throw new Error('Data to be updated not found')
       const entity = await this.Model.updateOne({ _id: id } as object, { ...data });
       // console.log(entity)
-      return isEntityFound;
+      return entity;
     } catch (error) { throw error; }
   }
 

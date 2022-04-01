@@ -59,8 +59,8 @@ export default {
       return reservationService.findOne({ id: reservationId })
     },
 
-    visits(parent: any, args: any, { visitService, res }: { visitService: any, res: any}, info: any) {
-      return visitService.getAll()
+    async visits(parent: any, args: any, { visitService, res }: { visitService: any, res: any}, info: any) {
+      return await visitService.getAll()
     },
     visit(parent: any, { visitId }: { visitId: String }, { visitService }: { visitService: any }, info: any) {
       if(!visitId) throw new UserInputError('VisitID is invalid')
