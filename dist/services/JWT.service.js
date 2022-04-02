@@ -151,7 +151,7 @@ let JWTManager = class JWTManager {
         });
     }
     passwordRecoveryTokenGen({ email }) {
-        const privateKey = fs_1.default.readFileSync(path_1.default.join('keys', 'password_recovery_private_key.pem'), 'utf-8');
+        const privateKey = fs_1.default.readFileSync(path_1.default.join('dist/keys', 'gontche_password_recovery_private_key.pem'), 'utf-8');
         const payload = {};
         const options = {
             audience: email,
@@ -161,7 +161,6 @@ let JWTManager = class JWTManager {
         return new Promise((resolve, reject) => {
             jsonwebtoken_1.default.sign(payload, privateKey, options, (err, emailToken) => {
                 if (err) {
-                    console.log(err);
                     reject(new http_errors_1.default.InternalServerError());
                 }
                 resolve({ emailToken });
@@ -170,7 +169,7 @@ let JWTManager = class JWTManager {
     }
     verifyPasswordRecoveryToken({ passwordRecoveryToken }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const publicKey = fs_1.default.readFileSync(path_1.default.join('keys', 'gontche_password_recovery_public_key.pem'), 'utf-8');
+            const publicKey = fs_1.default.readFileSync(path_1.default.join('dist/keys', 'gontche_password_recovery_public_key.pem'), 'utf-8');
             return new Promise((resolve, reject) => {
                 jsonwebtoken_1.default.verify(passwordRecoveryToken, publicKey, (err, payload) => __awaiter(this, void 0, void 0, function* () {
                     if (err) {

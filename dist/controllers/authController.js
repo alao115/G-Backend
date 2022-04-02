@@ -44,6 +44,9 @@ exports.default = ({ AuthManager }) => class AuthController {
         });
         this.resetPassword = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
+                const { email, password } = res.locals.validatedData;
+                const response = yield AuthManager.resetPassword({ email, password });
+                res.send({ success: 1, data: Object.assign({}, response) });
             }
             catch (error) {
                 next(error);
@@ -63,7 +66,7 @@ exports.default = ({ AuthManager }) => class AuthController {
             try {
                 const passwordRecoveryToken = res.locals.validatedData['password-recovery-token'];
                 const response = yield AuthManager.passwordRecoveryTokenVerification({ passwordRecoveryToken });
-                res.send({ success: 1, data: { id: response.id } });
+                res.send({ success: 1, data: { user: response } });
             }
             catch (error) {
                 console.log(error);

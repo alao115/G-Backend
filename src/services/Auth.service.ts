@@ -71,13 +71,18 @@ export default class AuthManager {
     } catch (err) { throw err; }
   };
 
-  async resetPassword ({ email }: { email: string }) {
+  async resetPassword ({ email, password }: { email: string; password: string }) {
     try {
       const user = await this.userService.findByEmail({ email });
 
       if (!user) throw new createError.NotFound("User not found");
 
-      //Generate new password or set new password manually
+      //Hash user password
+      const hashedPassword = await argon2.hash(password);
+
+      const response = await this.userService.update({ id: user._id, data: { password: hashedPassword }})
+
+      return response
     } catch (error) { throw error }
   };
 
@@ -92,14 +97,14 @@ export default class AuthManager {
     }
   }
 
-  async passwordRecoveryTokenVerification({ emailToken }: { emailToken: string }) {
-    try {
-      const user = await this.JWTManager.verifyPasswordRecoveryToken({ emailVerificationToken: emailToken });
-      return user
-    } catch (error) {
-      throw error;
-    }
-  }
+  // async passwordRecoveryTokenVerification({ emailToken }: { emailToken: string }) {
+  //   try {
+  //     const user = await this.JWTManager.verifyPasswordRecoveryToken({ emailVerificationToken: emailToken });
+  //     return user
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 
   async sendVerificationMail({ email, isPassword }: { email: string; isPassword: boolean }) {
     try {
@@ -115,7 +120,7 @@ export default class AuthManager {
       /* Generate token to be sent with the mail */
       const { emailToken } = isPassword ? await this.JWTManager.passwordRecoveryTokenGen({ email }) : await this.JWTManager.emailVerificationTokenGen({ email })
 
-      const verificationUrl = `${config.frontendUrl}/auth/signup/${ !isPassword ? 'email-verified' : 'new-password'}?token=${emailToken}`,
+      const verificationUrl = `${config.frontendUrl}/auth/${ !isPassword ? 'signup/email-verified' : 'password-forgotten/new-password'}?token=${emailToken}`,
             from = 'catch-all@rcg.studio',
             subject = isPassword ? 'Réinitialisation mot de passe.' : 'Vérification d\'adresse email',
             content = `
@@ -137,10 +142,10 @@ export default class AuthManager {
     }
   }
 
-  // async passwordRecoveryTokenVerification({ passwordRecoveryToken }: { passwordRecoveryToken: string }) {
-  //   try {
-  //     const response = await JWTManager.verifyPasswordRecoveryToken({ passwordRecoveryToken })
-  //     return response
-  //   } catch (error) { throw error }
-  // }
+  async passwordRecoveryTokenVerification({ passwordRecoveryToken }: { passwordRecoveryToken: string }) {
+    try {
+      const response = await this.JWTManager.verifyPasswordRecoveryToken({ passwordRecoveryToken })
+      return response
+    } catch (error) { throw error }
+  }
 }

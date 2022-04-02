@@ -45,6 +45,7 @@ export default class ValidationManager {
 
       resetPassword: Joi.object({
         email: Joi.string().email().required(),
+        password: Joi.string().required()
       }),
     }
   }

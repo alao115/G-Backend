@@ -48,6 +48,7 @@ class ValidationManager {
             }),
             resetPassword: joi_1.default.object({
                 email: joi_1.default.string().email().required(),
+                password: joi_1.default.string().required()
             }),
         };
     }

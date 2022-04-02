@@ -160,7 +160,7 @@ export default  class JWTManager {
   }
 
   passwordRecoveryTokenGen({ email }: { email: string }) {
-    const privateKey = fs.readFileSync(path.join('keys', 'password_recovery_private_key.pem'), 'utf-8');
+    const privateKey = fs.readFileSync(path.join('dist/keys', 'gontche_password_recovery_private_key.pem'), 'utf-8');
 
     const payload = {};
 
@@ -173,7 +173,7 @@ export default  class JWTManager {
     return new Promise((resolve, reject) => {
       JWT.sign(payload, privateKey, options, (err, emailToken) => {
         if (err) {
-          console.log(err)
+          // console.log(err)
           reject(new createError.InternalServerError());
         }
 
@@ -183,7 +183,7 @@ export default  class JWTManager {
   }
 
   async verifyPasswordRecoveryToken({ passwordRecoveryToken }: { passwordRecoveryToken: string }) {
-    const publicKey = fs.readFileSync(path.join('keys', 'gontche_password_recovery_public_key.pem'), 'utf-8');
+    const publicKey = fs.readFileSync(path.join('dist/keys', 'gontche_password_recovery_public_key.pem'), 'utf-8');
 
     return new Promise((resolve, reject) => {
       JWT.verify(passwordRecoveryToken, publicKey, async (err, payload) => {
