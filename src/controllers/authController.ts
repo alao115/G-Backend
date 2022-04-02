@@ -36,6 +36,11 @@ export default ({ AuthManager }: { AuthManager: any }) => class AuthController {
 
   resetPassword: RequestHandler = async (req, res, next) => {
     try {
+      const { email, password } = res.locals.validatedData
+
+      const response = await AuthManager.resetPassword({ email, password })
+
+      res.send({ success: 1, data: { ...response }})
 
     } catch (error) { next(error) }
   }
@@ -71,7 +76,7 @@ export default ({ AuthManager }: { AuthManager: any }) => class AuthController {
       const passwordRecoveryToken = res.locals.validatedData['password-recovery-token']
       const response = await AuthManager.passwordRecoveryTokenVerification({ passwordRecoveryToken })
 
-      res.send({ success: 1, data: { id: response.id } })
+      res.send({ success: 1, data: { user: response } })
     } catch (error) {
       console.log(error)
       next(error) }
