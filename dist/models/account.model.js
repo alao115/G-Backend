@@ -23,10 +23,6 @@ const accountSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
-    userType: {
-        type: Number,
-        default: 1
-    },
     status: {
         type: String,
     },

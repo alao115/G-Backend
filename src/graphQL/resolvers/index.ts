@@ -80,6 +80,11 @@ export default {
       return accountService.findOne({ user: parent.publisher })
     }
   },
+  Account: {
+    user (parent: any, args: any, { userService, res }: { userService: any,  res: any}, info: any) {
+      return userService.findByID({ id: parent.user })
+    },
+  },
   // Reservation: {
   //   appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
   //     return appartmentService.findByID({ id: parent.appartment })
@@ -106,9 +111,11 @@ export default {
       if(!data || !accountId) throw new UserInputError('Invalid account data')
       return accountService.update({ id: accountId, data})
     },
-    deleteAccount(parent: any, { data, accountId }: { data: any, accountId: string }, { accountService }: { accountService: any }, info: any) {
+    deleteAccount(parent: any, { data, accountId }: { data: any, accountId: string }, { accountService, userService }: { accountService: any; userService: any }, info: any) {
       if(!accountId) throw new UserInputError('Invalid account data')
-      return accountService.delete({ id: accountId})
+      return accountService.findOne({ id: accountId})
+              .then((account: any) => userService.delete({ id: account.user }))
+              .then(() => accountService.delete({ id: accountId }))
     },
 
     createAppartment(parent: any, { data }: { data: any}, { appartmentService }: { appartmentService: any }, info: any) {
@@ -130,7 +137,7 @@ export default {
 
     createAppartmentType(parent: any, { data }: { data: any}, { appartmentTypeService }: { appartmentTypeService: any }, info: any) {
       if(!data) throw new UserInputError('Invalid appartment type data')
-      console.log('AppartmentType Data :: => ', data)
+      // console.log('AppartmentType Data :: => ', data)
       return appartmentTypeService.create(data)
     },
     updateAppartmentType(parent: any, { data, appartmentTypeId }: { data: any, appartmentTypeId: string }, { appartmentTypeService }: { appartmentTypeService: any }, info: any) {

@@ -28,7 +28,7 @@ const schema = (0, apollo_server_core_1.gql) `
   type Mutation {
     createAccount(data: accountData): Account!
     updateAccount(accountId: ID!, data: accountData): Account
-    deleteAccount(accountId: ID!, data: accountData): Account
+    deleteAccount(accountId: ID!): Account
 
     createAppartment(data: appartmentData): Appartment!
     updateAppartment(appartmentId: ID!, data: appartmentData): Appartment
@@ -52,7 +52,7 @@ const schema = (0, apollo_server_core_1.gql) `
 
     createVisit(data: visitData): Visit!
     updateVisit(visitId: ID!, data: visitData): Visit
-    deleteVisit(visitId: ID!, data: visitData): Visit
+    deleteVisit(visitId: ID!): Visit
   }
 
   type User {
@@ -61,10 +61,16 @@ const schema = (0, apollo_server_core_1.gql) `
     password: String
   }
 
+  type MyUser {
+    id: ID!,
+    email: String,
+    userType: Int,
+    emailVerified: Boolean
+  }
+
   type Account {
     id: ID!
-    user: String
-    userType: Int
+    user: MyUser
     status: String
     createdAt: String
     firstname: String
@@ -77,7 +83,6 @@ const schema = (0, apollo_server_core_1.gql) `
 
   input accountData {
     user: String
-    userType: Int
     status: String
     createdAt: String
     firstname: String
