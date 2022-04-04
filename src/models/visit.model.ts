@@ -13,13 +13,28 @@ const visitSchema = new Schema<Visit, Model<Visit>, Visit>({
     type: String,
     required: true,
   },
-  user: {
-    type: String,
-    required: true,
+  visitorInfos: {
+    firstname: {
+      type: String,
+      default: ''
+    },
+    lastname: {
+      type: String,
+      default: ''
+    },
+    phone: {
+      type: String,
+      default: ''
+    },
+    email: {
+      type: String,
+      default: ''
+    },
   },
   date: {
     type: String,
     required: true,
+    get: (v: any ) => moment.unix(v).format("YYYY-MM-DD")
   },
   status: {
     type: String,

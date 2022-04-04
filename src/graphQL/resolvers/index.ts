@@ -1,6 +1,7 @@
 import { UserInputError } from "apollo-server-core"
 import { Request, Response } from 'express';
 import Reservation from '../../types/reservations';
+import moment from 'moment'
 
 export default {
   Query: {
@@ -183,11 +184,12 @@ export default {
 
     createVisit(parent: any, { data }: { data: any}, { visitService }: { visitService: any }, info: any) {
       if(!data) throw new UserInputError('Invalid visit data')
-      return visitService.create(data)
+
+      return visitService.create({ ...data, date: moment(data.date).unix() })
     },
     updateVisit(parent: any, { data, visitId }: { data: any, visitId: string }, { visitService }: { visitService: any }, info: any) {
       if(!data || !visitId) throw new UserInputError('Invalid visit data')
-      return visitService.update({ id: visitId, data})
+      return visitService.update({ id: visitId, data: { ...data, date: moment(data.date).unix() } })
     },
     deleteVisit(parent: any, { data, visitId }: { data: any, visitId: string }, { visitService }: { visitService: any }, info: any) {
       if(!visitId) throw new UserInputError('Invalid visit data')
