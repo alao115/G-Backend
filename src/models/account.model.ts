@@ -20,11 +20,11 @@ const accountSchema = new Schema<Account, Model<Account>, Account>({
     type: String,
     required: true
   },
-  userType: {
-    type: Number,
-    // required: true
-    default: 1
-  },
+  // userType: {
+  //   type: Number,
+  //   // required: true
+  //   default: 1
+  // },
   status: {
     type: String,
     // required: true
