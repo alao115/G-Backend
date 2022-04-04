@@ -122,6 +122,12 @@ const schema = (0, apollo_server_core_1.gql) `
     phone: String
     email: String
   }
+  type visitorInfos {
+    firstname: String
+    lastname: String
+    phone: String
+    email: String
+  }
 
   type Appartment {
     id: ID!
@@ -168,6 +174,12 @@ const schema = (0, apollo_server_core_1.gql) `
     lastname: String
     address: String
     isAlive: Boolean
+    phone: String
+    email: String
+  }
+  input visitorInfosData {
+    firstname: String
+    lastname: String
     phone: String
     email: String
   }
@@ -306,14 +318,14 @@ const schema = (0, apollo_server_core_1.gql) `
   type Visit {
     id: ID!
     appartment: String
-    user: String
+    visitorInfos: visitorInfos
     date: String
     status: String
   }
 
   input visitData {
     appartment: String
-    user: String
+    visitorInfos: visitorInfosData
     date: String
     status: String
   }

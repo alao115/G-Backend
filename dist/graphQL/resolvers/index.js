@@ -8,8 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_core_1 = require("apollo-server-core");
+const moment_1 = __importDefault(require("moment"));
 exports.default = {
     Query: {
         hello(parent, args, context, info) {
@@ -187,12 +191,12 @@ exports.default = {
         createVisit(parent, { data }, { visitService }, info) {
             if (!data)
                 throw new apollo_server_core_1.UserInputError('Invalid visit data');
-            return visitService.create(data);
+            return visitService.create(Object.assign(Object.assign({}, data), { date: (0, moment_1.default)(data.date).unix() }));
         },
         updateVisit(parent, { data, visitId }, { visitService }, info) {
             if (!data || !visitId)
                 throw new apollo_server_core_1.UserInputError('Invalid visit data');
-            return visitService.update({ id: visitId, data });
+            return visitService.update({ id: visitId, data: Object.assign(Object.assign({}, data), { date: (0, moment_1.default)(data.date).unix() }) });
         },
         deleteVisit(parent, { data, visitId }, { visitService }, info) {
             if (!visitId)

@@ -16,13 +16,28 @@ const visitSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
-    user: {
-        type: String,
-        required: true,
+    visitorInfos: {
+        firstname: {
+            type: String,
+            default: ''
+        },
+        lastname: {
+            type: String,
+            default: ''
+        },
+        phone: {
+            type: String,
+            default: ''
+        },
+        email: {
+            type: String,
+            default: ''
+        },
     },
     date: {
         type: String,
         required: true,
+        get: (v) => moment_1.default.unix(v).format("YYYY-MM-DD")
     },
     status: {
         type: String,
