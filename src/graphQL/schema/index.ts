@@ -21,6 +21,7 @@ const schema = gql`
     visit(visitId: String): Visit
 
     authUser: User!
+    authUserAccount: Account!
   }
 
   type Mutation {
