@@ -82,6 +82,9 @@ exports.default = {
         },
         authUser(parent, args, { userService, res }, info) {
             return res.locals.authUser;
+        },
+        authUserAccount(parent, args, { accountService, res }, info) {
+            return accountService.findOne({ user: res.locals.authUser.id });
         }
     },
     Publication: {

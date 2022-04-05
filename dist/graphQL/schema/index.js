@@ -23,6 +23,7 @@ const schema = (0, apollo_server_core_1.gql) `
     visit(visitId: String): Visit
 
     authUser: User!
+    authUserAccount: Account!
   }
 
   type Mutation {

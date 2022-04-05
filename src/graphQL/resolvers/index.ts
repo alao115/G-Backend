@@ -70,6 +70,10 @@ export default {
 
     authUser(parent: any, args: any, { userService, res }: { userService: any, res: any}, info: any) {
       return res.locals.authUser
+    },
+
+    authUserAccount(parent: any, args: any, { accountService, res }: { accountService: any, res: any}, info: any) {
+      return accountService.findOne({ user: res.locals.authUser.id })
     }
   },
   Publication: {
