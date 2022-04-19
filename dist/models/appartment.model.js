@@ -103,6 +103,14 @@ const appartmentSchema = new mongoose_1.Schema({
         type: Number,
         default: 0
     },
+    rentStart: {
+        type: Number,
+        default: 0
+    },
+    rentEnd: {
+        type: Number,
+        default: 0
+    },
     groundLevel: {
         type: Number,
         default: 0
@@ -131,7 +139,7 @@ const appartmentSchema = new mongoose_1.Schema({
     },
     ownerInfos: {
         civility: {
-            type: String,
+            type: Number,
             required: true
         },
         firstname: {

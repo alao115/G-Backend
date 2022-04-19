@@ -17,7 +17,7 @@ exports.default = ({ app }) => __awaiter(void 0, void 0, void 0, function* () {
     const server = new apollo_server_express_1.ApolloServer({
         typeDefs: graphQL_1.typeDefs,
         resolvers: graphQL_1.resolvers,
-        context: ({ req, res }) => ({ req, res, userService: services_1.userService, accountService: services_1.accountService, appartmentService: services_1.appartmentService, appartmentDetailService: services_1.appartmentDetailService, appartmentTypeService: services_1.appartmentTypeService, publicationService: services_1.publicationService, reservationService: services_1.reservationService, visitService: services_1.visitService }),
+        context: ({ req, res }) => ({ req, res, userService: services_1.userService, accountService: services_1.accountService, appartmentService: services_1.appartmentService, appartmentDetailService: services_1.appartmentDetailService, appartmentTypeService: services_1.appartmentTypeService, publicationService: services_1.publicationService, reservationService: services_1.reservationService, visitService: services_1.visitService, favoryService: services_1.favoryService }),
         plugins: [(0, apollo_server_core_1.ApolloServerPluginLandingPageDisabled)()],
     });
     yield server.start();

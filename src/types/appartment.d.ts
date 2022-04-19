@@ -32,7 +32,7 @@ export default interface Appartment {
     paymentFrequency: number;
   },
   ownerInfos: {
-    civility: string;
+    civility: number;
     firstname: string;
     lastname: string;
     address: string;
@@ -41,5 +41,7 @@ export default interface Appartment {
     email: string;
   };
   likes: number;
-  favorite: number
+  favorite: number;
+  rentStart: number;
+  rentEnd: number;
 }

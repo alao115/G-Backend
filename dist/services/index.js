@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mailService = exports.firebaseStorageService = exports.validationService = exports.ValidationManager = exports.AuthManager = exports.visitService = exports.reservationService = exports.publicationService = exports.appartmentTypeService = exports.appartmentDetailService = exports.appartmentService = exports.accountService = exports.userService = exports.JWTService = exports.RedisClientManager = void 0;
+exports.favoryService = exports.mailService = exports.firebaseStorageService = exports.validationService = exports.ValidationManager = exports.AuthManager = exports.visitService = exports.reservationService = exports.publicationService = exports.appartmentTypeService = exports.appartmentDetailService = exports.appartmentService = exports.accountService = exports.userService = exports.JWTService = exports.RedisClientManager = void 0;
 const JWT_service_1 = __importDefault(require("./JWT.service"));
 const Auth_service_1 = __importDefault(require("./Auth.service"));
 const validation_service_1 = __importDefault(require("./validation.service"));
@@ -30,6 +30,8 @@ const publicationService = new serviceGenerator_service_1.default(models_1.Publi
 exports.publicationService = publicationService;
 const reservationService = new serviceGenerator_service_1.default(models_1.Reservation);
 exports.reservationService = reservationService;
+const favoryService = new serviceGenerator_service_1.default(models_1.Favory);
+exports.favoryService = favoryService;
 const visitService = new serviceGenerator_service_1.default(models_1.Visit);
 exports.visitService = visitService;
 const appartmentTypeService = new serviceGenerator_service_1.default(models_1.AppartmentType);

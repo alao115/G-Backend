@@ -83,7 +83,7 @@ let serviceGenerator = class serviceGenerator {
                 if (!isEntityFound)
                     throw new Error('Data to be updated not found');
                 const entity = yield this.Model.updateOne({ _id: id }, Object.assign({}, data));
-                return entity;
+                return isEntityFound;
             }
             catch (error) {
                 throw error;

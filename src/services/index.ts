@@ -6,7 +6,7 @@ import serviceGeneratorService from './serviceGenerator.service'
 import firebaseStorageManager from './firebase.storage.service'
 import mailServiceManager from './email.service'
 
-import { User, Account, Appartment, AppartmentDetail, Publication, Reservation, Visit, AppartmentType } from "../models"
+import { User, Account, Appartment, AppartmentDetail, Publication, Reservation, Visit, AppartmentType, Favory } from "../models"
 import firebaseApp from '../loaders/firebase'
 
 const mailService = new mailServiceManager()
@@ -24,6 +24,8 @@ const appartmentDetailService = new serviceGeneratorService(AppartmentDetail)
 const publicationService = new serviceGeneratorService(Publication)
 
 const reservationService = new serviceGeneratorService(Reservation)
+
+const favoryService = new serviceGeneratorService(Favory)
 
 const visitService = new serviceGeneratorService(Visit)
 
@@ -53,5 +55,6 @@ export {
   ValidationManager,
   validationService,
   firebaseStorageService,
-  mailService
+  mailService,
+  favoryService,
 }

@@ -80,6 +80,14 @@ exports.default = {
                 throw new apollo_server_core_1.UserInputError('VisitID is invalid');
             return visitService.findOne({ id: visitId });
         },
+        favories(parent, args, { favoryService, res }, info) {
+            return favoryService.getAll();
+        },
+        favory(parent, { favoryId }, { favoryService }, info) {
+            if (!favoryId)
+                throw new apollo_server_core_1.UserInputError('FavoryID is invalid');
+            return favoryService.findOne({ id: favoryId });
+        },
         authUser(parent, args, { userService, res }, info) {
             return res.locals.authUser;
         },
@@ -98,6 +106,14 @@ exports.default = {
     Account: {
         user(parent, args, { userService, res }, info) {
             return userService.findByID({ id: parent.user });
+        },
+    },
+    Favory: {
+        user(parent, args, { accountService, res }, info) {
+            return accountService.findOne({ user: parent.user });
+        },
+        appartment(parent, args, { appartmentService, res }, info) {
+            return appartmentService.findOne({ appartment: parent.appartment });
         },
     },
     Mutation: {
@@ -211,6 +227,21 @@ exports.default = {
             if (!visitId)
                 throw new apollo_server_core_1.UserInputError('Invalid visit data');
             return visitService.delete({ id: visitId });
+        },
+        createFavory(parent, { data }, { favoryService }, info) {
+            if (!data)
+                throw new apollo_server_core_1.UserInputError('Invalid favory data');
+            return favoryService.create(data);
+        },
+        updateFavory(parent, { data, favoryId }, { favoryService }, info) {
+            if (!data || !favoryId)
+                throw new apollo_server_core_1.UserInputError('Invalid favory data');
+            return favoryService.update({ id: favoryId, data });
+        },
+        deleteFavory(parent, { data, favoryId }, { favoryService }, info) {
+            if (!favoryId)
+                throw new apollo_server_core_1.UserInputError('Invalid favory data');
+            return favoryService.delete({ id: favoryId });
         },
     }
 };
