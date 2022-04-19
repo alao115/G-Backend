@@ -101,6 +101,16 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
     type: Number,
     default: 0
   },
+  rentStart: {
+    type: Number,
+    // required: true
+    default: 0
+  },
+  rentEnd: {
+    type: Number,
+    // required: true
+    default: 0
+  },
   groundLevel: {
     type: Number,
     default: 0
@@ -129,7 +139,7 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
   },
   ownerInfos: {
     civility: {
-      type: String,
+      type: Number,
       required: true
     },
     firstname: {

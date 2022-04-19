@@ -19,6 +19,8 @@ const schema = gql`
     reservation(reservationId: String): Reservation
     visits: [Visit!]!
     visit(visitId: String): Visit
+    favories: [Favory!]!
+    favory(favoryId: String): Favory
 
     authUser: User!
     authUserAccount: Account!
@@ -52,6 +54,10 @@ const schema = gql`
     createVisit(data: visitData): Visit!
     updateVisit(visitId: ID!, data: visitData): Visit
     deleteVisit(visitId: ID!): Visit
+
+    createFavory(data: favoryData): Favory!
+    updateFavory(favoryId: ID!, data: favoryData): Favory
+    deleteFavory(favoryId: ID!): Favory
   }
 
   type User {
@@ -118,7 +124,7 @@ const schema = gql`
     paymentFrequency: Int
   }
   type ownerInfos {
-    civility: String
+    civility: Int
     firstname: String
     lastname: String
     address: String
@@ -173,7 +179,7 @@ const schema = gql`
     paymentFrequency: Int
   }
   input ownerInfosData {
-    civility: String
+    civility: Int
     firstname: String
     lastname: String
     address: String
@@ -332,6 +338,16 @@ const schema = gql`
     visitorInfos: visitorInfosData
     date: String
     status: String
+  }
+
+  type Favory {
+    user: Account!
+    appartment: Appartment!
+  }
+
+  input favoryData {
+    user: String
+    appartment: String
   }
 `
 

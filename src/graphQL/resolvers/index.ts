@@ -68,6 +68,14 @@ export default {
       return visitService.findOne({ id: visitId })
     },
 
+    favories(parent: any, args: any, { favoryService, res }: { favoryService: any, res: any}, info: any) {
+      return favoryService.getAll()
+    },
+    favory(parent: any, { favoryId }: { favoryId: String }, { favoryService }: { favoryService: any }, info: any) {
+      if(!favoryId) throw new UserInputError('FavoryID is invalid')
+      return favoryService.findOne({ id: favoryId })
+    },
+
     authUser(parent: any, args: any, { userService, res }: { userService: any, res: any}, info: any) {
       return res.locals.authUser
     },
@@ -87,6 +95,14 @@ export default {
   Account: {
     user (parent: any, args: any, { userService, res }: { userService: any,  res: any}, info: any) {
       return userService.findByID({ id: parent.user })
+    },
+  },
+  Favory: {
+    user (parent: any, args: any, { accountService, res }: { accountService: any,  res: any}, info: any) {
+      return accountService.findOne({ user: parent.user })
+    },
+    appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
+      return appartmentService.findOne({ appartment: parent.appartment })
     },
   },
   // Reservation: {
@@ -205,6 +221,20 @@ export default {
     deleteVisit(parent: any, { data, visitId }: { data: any, visitId: string }, { visitService }: { visitService: any }, info: any) {
       if(!visitId) throw new UserInputError('Invalid visit data')
       return visitService.delete({ id: visitId})
+    },
+
+    createFavory(parent: any, { data }: { data: any}, { favoryService }: { favoryService: any }, info: any) {
+      if(!data) throw new UserInputError('Invalid favory data')
+
+      return favoryService.create(data)
+    },
+    updateFavory(parent: any, { data, favoryId }: { data: any, favoryId: string }, { favoryService }: { favoryService: any }, info: any) {
+      if(!data || !favoryId) throw new UserInputError('Invalid favory data')
+      return favoryService.update({ id: favoryId, data })
+    },
+    deleteFavory(parent: any, { data, favoryId }: { data: any, favoryId: string }, { favoryService }: { favoryService: any }, info: any) {
+      if(!favoryId) throw new UserInputError('Invalid favory data')
+      return favoryService.delete({ id: favoryId })
     },
   }
 }
