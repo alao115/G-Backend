@@ -343,6 +343,7 @@ const schema = (0, apollo_server_core_1.gql) `
   }
 
   type Favory {
+    id: ID!
     user: Account!
     appartment: Appartment!
   }
