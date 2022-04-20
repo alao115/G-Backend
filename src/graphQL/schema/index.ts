@@ -341,6 +341,7 @@ const schema = gql`
   }
 
   type Favory {
+    id: ID!
     user: Account!
     appartment: Appartment!
   }
