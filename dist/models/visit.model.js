@@ -37,7 +37,7 @@ const visitSchema = new mongoose_1.Schema({
     date: {
         type: String,
         required: true,
-        get: (v) => moment_1.default.unix(v).format("YYYY-MM-DD")
+        get: (v) => moment_1.default.unix(v).format("DD-MM-YYYY")
     },
     status: {
         type: String,
