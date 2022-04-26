@@ -27,6 +27,13 @@ export default class serviceGenerator<T extends Model<any>> {
     } catch (error) { throw error; }
   }
 
+  async find(condition: object) {
+    try {
+      const entities = await this.Model.find({ ...condition }, { __v: false });
+      return entities;
+    } catch (error) { throw error; }
+  }
+
   async findByEmail({ email }: { email: string; }) {
     try {
       const entity = await this.Model.findOne({ email } as object, { __v: false });

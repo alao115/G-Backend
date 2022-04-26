@@ -82,6 +82,10 @@ export default {
 
     authUserAccount(parent: any, args: any, { accountService, res }: { accountService: any, res: any}, info: any) {
       return accountService.findOne({ user: res.locals.authUser.id })
+    },
+
+    authUserFavories(parent: any, args: any, { favoryService, res }: { favoryService: any, res: any}, info: any) {
+      return favoryService.find({ user: res.locals.authUser.id })
     }
   },
   Publication: {
@@ -102,7 +106,7 @@ export default {
       return accountService.findOne({ user: parent.user })
     },
     appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
-      return appartmentService.findOne({ appartment: parent.appartment })
+      return appartmentService.findOne({ _id: parent.appartment })
     },
   },
   // Reservation: {
