@@ -93,6 +93,9 @@ exports.default = {
         },
         authUserAccount(parent, args, { accountService, res }, info) {
             return accountService.findOne({ user: res.locals.authUser.id });
+        },
+        authUserFavories(parent, args, { favoryService, res }, info) {
+            return favoryService.find({ user: res.locals.authUser.id });
         }
     },
     Publication: {
@@ -113,7 +116,7 @@ exports.default = {
             return accountService.findOne({ user: parent.user });
         },
         appartment(parent, args, { appartmentService, res }, info) {
-            return appartmentService.findOne({ appartment: parent.appartment });
+            return appartmentService.findOne({ _id: parent.appartment });
         },
     },
     Mutation: {

@@ -26,6 +26,7 @@ const schema = (0, apollo_server_core_1.gql) `
 
     authUser: User!
     authUserAccount: Account!
+    authUserFavories: [Favory!]!
   }
 
   type Mutation {

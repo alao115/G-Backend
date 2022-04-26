@@ -24,6 +24,7 @@ const schema = gql`
 
     authUser: User!
     authUserAccount: Account!
+    authUserFavories: [Favory!]!
   }
 
   type Mutation {

@@ -53,6 +53,17 @@ let serviceGenerator = class serviceGenerator {
             }
         });
     }
+    find(condition) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const entities = yield this.Model.find(Object.assign({}, condition), { __v: false });
+                return entities;
+            }
+            catch (error) {
+                throw error;
+            }
+        });
+    }
     findByEmail({ email }) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
