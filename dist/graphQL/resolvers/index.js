@@ -119,6 +119,11 @@ exports.default = {
             return appartmentService.findOne({ _id: parent.appartment });
         },
     },
+    Appartment: {
+        createdBy(parent, args, { accountService, res }, info) {
+            return accountService.findOne({ user: parent.createdBy });
+        },
+    },
     Mutation: {
         createAccount(parent, { data }, { accountService }, info) {
             if (!data)
@@ -137,10 +142,10 @@ exports.default = {
                 .then((account) => userService.delete({ id: account.user }))
                 .then(() => accountService.delete({ id: accountId }));
         },
-        createAppartment(parent, { data }, { appartmentService }, info) {
+        createAppartment(parent, { data }, { appartmentService, res }, info) {
             if (!data)
                 throw new apollo_server_core_1.UserInputError('Invalid appartment data');
-            return appartmentService.create(data);
+            return appartmentService.create({ data, createdBy: res.locals.authUser._id });
         },
         updateAppartment(parent, { data, appartmentId }, { appartmentService }, info) {
             if (!data || !appartmentId)

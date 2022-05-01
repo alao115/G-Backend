@@ -12,6 +12,10 @@ const appartmentSchema = new mongoose_1.Schema({
             return this._id;
         }
     },
+    createdBy: {
+        type: String,
+        required: true
+    },
     mainImg: {
         type: String,
         default: ''

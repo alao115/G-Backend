@@ -142,6 +142,7 @@ const schema = gql`
 
   type Appartment {
     id: ID!
+    createdBy: Account
     mainImg: String
     firstImg: String
     secondImg: String

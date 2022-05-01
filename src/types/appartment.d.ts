@@ -1,5 +1,6 @@
 export default interface Appartment {
   id: string;
+  createdBy: string;
   mainImg: string;
   firstImg: string;
   secondImg: string;

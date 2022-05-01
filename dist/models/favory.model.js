@@ -6,6 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const moment_1 = __importDefault(require("moment"));
 const favorySchema = new mongoose_1.Schema({
+    id: {
+        type: String,
+        default() {
+            return this._id;
+        }
+    },
     appartment: {
         type: String,
         required: true,

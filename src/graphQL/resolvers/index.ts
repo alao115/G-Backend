@@ -109,6 +109,12 @@ export default {
       return appartmentService.findOne({ _id: parent.appartment })
     },
   },
+  Appartment: {
+    createdBy (parent: any, args: any, { accountService, res }: { accountService: any,  res: any}, info: any) {
+      return accountService.findOne({ user: parent.createdBy })
+    },
+
+  },
   // Reservation: {
   //   appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
   //     return appartmentService.findByID({ id: parent.appartment })
@@ -142,9 +148,9 @@ export default {
               .then(() => accountService.delete({ id: accountId }))
     },
 
-    createAppartment(parent: any, { data }: { data: any}, { appartmentService }: { appartmentService: any }, info: any) {
+    createAppartment(parent: any, { data }: { data: any}, { appartmentService, res }: { appartmentService: any; res: any }, info: any) {
       if(!data) throw new UserInputError('Invalid appartment data')
-      return appartmentService.create(data)
+      return appartmentService.create({ data, createdBy: res.locals.authUser._id })
     },
     updateAppartment(parent: any, { data, appartmentId }: { data: any, appartmentId: string }, { appartmentService }: { appartmentService: any }, info: any) {
       if(!data || !appartmentId) throw new UserInputError('Invalid appartment data')

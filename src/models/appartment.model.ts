@@ -9,6 +9,10 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
       return this._id;
     }
   },
+  createdBy: {
+    type: String,
+    required: true
+  },
   mainImg: {
     type: String,
     default: ''

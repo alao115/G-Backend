@@ -144,6 +144,7 @@ const schema = (0, apollo_server_core_1.gql) `
 
   type Appartment {
     id: ID!
+    createdBy: Account
     mainImg: String
     firstImg: String
     secondImg: String
