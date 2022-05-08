@@ -5,8 +5,13 @@ services:
   mongodb:
     container_name: 'gontche_mongodb'
     image: "mongo"
+    command:
+      - '--auth'
+      - '-f'
+      - '/etc/mongod.conf'
     volumes:
       - '/data/db:/data/db'
+      - '/data/db/mongod.conf:/etc/mongod.conf'
     ports:
       - '27017:27017'
 
