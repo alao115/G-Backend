@@ -5,15 +5,15 @@ services:
   mongodb:
     container_name: 'gontche_mongodb'
     image: "mongo"
-    command:
-      - '--auth'
-      - '-f'
-      - '/etc/mongod.conf'
     volumes:
       - '/data/db:/data/db'
       - '/data/db/mongod.conf:/etc/mongod.conf'
     ports:
       - '27017:27017'
+    #command: 
+      #- "--auth"
+      #- "--config"
+      #- "/etc/mongod.conf"
 
   redis:
     container_name: 'gontche_redis'
@@ -32,10 +32,10 @@ services:
   #     - 'mongodb'
   #     - 'redis'
 
-  mongoExpress:
-    container_name: 'gontche_mongo_express'
-    image: 'mongo-express'
-    ports:
-      - '8081:8081'
-    environment:
-      - 'ME_CONFIG_MONGODB_SERVER=mongodb'
+  #mongoExpress:
+  #  container_name: 'gontche_mongo_express'
+  #  image: 'mongo-express'
+  #  ports:
+  #    - '8081:8081'
+  #  environment:
+  #    - 'ME_CONFIG_MONGODB_SERVER=mongodb'
