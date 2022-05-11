@@ -3,12 +3,12 @@ module.exports = {
     {
       name: 'gontche_backend_prod',
       script: 'npm run start',
-      watch: ['dist']
+      watch: true
     },
     {
       name: 'gontche_backend_dev',
       script: 'npm run dev',
-      watch: ['dist']
+      watch: true
     }
   ]
 }
