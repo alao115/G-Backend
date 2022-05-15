@@ -145,7 +145,7 @@ exports.default = {
         createAppartment(parent, { data }, { appartmentService, res }, info) {
             if (!data)
                 throw new apollo_server_core_1.UserInputError('Invalid appartment data');
-            return appartmentService.create({ data, createdBy: res.locals.authUser._id });
+            return appartmentService.create(Object.assign(Object.assign({}, data), { createdBy: res.locals.authUser._id }));
         },
         updateAppartment(parent, { data, appartmentId }, { appartmentService }, info) {
             if (!data || !appartmentId)
