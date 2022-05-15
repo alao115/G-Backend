@@ -4,16 +4,17 @@ import dbLoader from './db'
 import consola from 'consola'
 import graphQLLoader from './graphql'
 
-export default ({ app }: { app: Express }) => {
+export default async ({ app }: { app: Express }) => {
 
-  return dbLoader()
-    .then(() => consola.success("Loading database loader successfully"))
-    .then(() => graphQLLoader({ app }))
-    .then(() => consola.success("Loading graphQL loader successfully"))
-    .then(() => expressLoader({ app }))
-    .then(() => consola.success("Loading express loader successfully"))
-    .catch(err => {
-      consola.error(err)
-      process.exit(1)
-    })
+  try {
+    await dbLoader()
+    consola.success("Loading database loader successfully")
+    await graphQLLoader({ app })
+    consola.success("Loading graphQL loader successfully")
+    await expressLoader({ app })
+    return consola.success("Loading express loader successfully")
+  } catch (err) {
+    consola.error(err)
+    process.exit(1)
+  }
 }
