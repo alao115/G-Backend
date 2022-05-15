@@ -150,7 +150,7 @@ export default {
 
     createAppartment(parent: any, { data }: { data: any}, { appartmentService, res }: { appartmentService: any; res: any }, info: any) {
       if(!data) throw new UserInputError('Invalid appartment data')
-      return appartmentService.create({ data, createdBy: res.locals.authUser._id })
+      return appartmentService.create({ ...data, createdBy: res.locals.authUser._id })
     },
     updateAppartment(parent: any, { data, appartmentId }: { data: any, appartmentId: string }, { appartmentService }: { appartmentService: any }, info: any) {
       if(!data || !appartmentId) throw new UserInputError('Invalid appartment data')
