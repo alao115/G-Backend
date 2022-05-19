@@ -7,7 +7,6 @@ pipeline {
         stage('Install') {
             steps {
                 sh 'npm install'
-                sh 'npm install --dev tsc'
             }
         }
         stage('Compile typescript') {
