@@ -44,7 +44,7 @@ export default  class JWTManager {
 
     const publicKey = fs.readFileSync(path.join("dist/keys", "gontche_public.pem"), "utf-8");
 
-    JWT.verify(token, publicKey, async (err, payload) => {
+    JWT.verify(token, publicKey, async (err, payload: any) => {
       if (err) {
         const message =
           err.name === "JsonWebTokenError" ? "Unauthorized" : err.name;
@@ -95,7 +95,7 @@ export default  class JWTManager {
     const publicKey = fs.readFileSync( path.join("dist/keys", "gontche_public_refresh.pem"), "utf-8");
 
     return new Promise((resolve, reject) => {
-      JWT.verify(refreshToken, publicKey, async (err, payload) => {
+      JWT.verify(refreshToken, publicKey, async (err, payload: any) => {
         if (err) {
           // console.error('Error: ', err)
           return reject(new createError.Unauthorized());
@@ -142,7 +142,7 @@ export default  class JWTManager {
     const publicKey = fs.readFileSync(path.join('dist/keys', 'gontche_email_verification_public_key.pem'), 'utf-8');
 
     return new Promise((resolve, reject) => {
-      JWT.verify(emailVerificationToken, publicKey, async (err, payload) => {
+      JWT.verify(emailVerificationToken, publicKey, async (err, payload: any) => {
         if (err) {
           return reject(new createError.Unauthorized());
         }
@@ -186,7 +186,7 @@ export default  class JWTManager {
     const publicKey = fs.readFileSync(path.join('dist/keys', 'gontche_password_recovery_public_key.pem'), 'utf-8');
 
     return new Promise((resolve, reject) => {
-      JWT.verify(passwordRecoveryToken, publicKey, async (err, payload) => {
+      JWT.verify(passwordRecoveryToken, publicKey, async (err, payload: any) => {
         if (err) {
           return reject(new createError.Unauthorized());
         }
