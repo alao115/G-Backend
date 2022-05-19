@@ -14,11 +14,10 @@ pipeline {
                 sh 'npm run tsc'
             }
         }
-        stage('Deliver') {
+        stage('Deliver and deploy') {
             steps {
-                sh 'cp -vuR ${WORKSPACE}/src ${WORKSPACE}/.eslintrc.json ${WORKSPACE}/.gitignore ${WORKSPACE}/docker-compose.yml ${WORKSPACE}/Dockerfile ${WORKSPACE}/ecosystem.config.js ${WORKSPACE}/Jenkinsfile ${WORKSPACE}/prettier.config.js ${WORKSPACE}/tsconfig.json ${WORKSPACE}/tslint.json /home/app/backend'
+                sh 'cp -vuR ${WORKSPACE}/dist ${WORKSPACE}/src ${WORKSPACE}/.eslintrc.json ${WORKSPACE}/.gitignore ${WORKSPACE}/docker-compose.yml ${WORKSPACE}/Dockerfile ${WORKSPACE}/ecosystem.config.js ${WORKSPACE}/Jenkinsfile ${WORKSPACE}/prettier.config.js ${WORKSPACE}/tsconfig.json ${WORKSPACE}/tslint.json /home/app/backend'
                 sh 'cp -vR /home/app/backend/src/keys /home/app/backend/dist'
-                // sh 'cp -vR ${WORKSPACE}/dist'
             }
         }
     }
