@@ -150,6 +150,7 @@ const schema = gql`
     fourthImg: String
     appartmentType: String
     isFurnished: Boolean
+    forShortStay: Boolean
     location: String
     rent: Int
     details: String
@@ -203,6 +204,7 @@ const schema = gql`
     fourthImg: String
     appartmentType: String
     isFurnished: Boolean
+    forShortStay: Boolean
     location: String
     rent: Int
     details: String

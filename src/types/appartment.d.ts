@@ -8,6 +8,7 @@ export default interface Appartment {
   fourthImg: string;
   appartmentType: string;
   isFurnished: boolean;
+  forShortStay: boolean;
   location: string;
   rent: number;
   details: string;
