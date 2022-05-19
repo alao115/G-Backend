@@ -41,6 +41,10 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
     type: Boolean,
     default: false
   },
+  forShortStay: {
+    type: Boolean,
+    default: false
+  },
   location: {
     type: String,
     // required: true
