@@ -25,6 +25,5 @@ export default ({ app }: { app: Express }) => {
     // error handler
     app.use(basicErrorHandler);
 
-    return Promise.resolve()
-
+    return Promise.resolve();
 }
