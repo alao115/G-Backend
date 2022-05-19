@@ -7,3 +7,4 @@ yarn-error.log
 todo.yml
 package-lock.json
 .dist
+dist/public
