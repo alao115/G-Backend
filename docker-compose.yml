@@ -10,8 +10,8 @@ services:
       - '/data/db/mongod.conf:/etc/mongod.conf'
     ports:
       - '27017:27017'
-    #command: 
-      #- "--auth"
+    command:
+      - "--auth"
       #- "--config"
       #- "/etc/mongod.conf"
 
