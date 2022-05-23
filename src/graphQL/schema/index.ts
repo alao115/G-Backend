@@ -28,7 +28,7 @@ const schema = gql`
   }
 
   type Mutation {
-    updateUser(userId: ID!, data: userData): User
+    updateUser(userId: ID!, data: userData): MyUser
 
     createAccount(data: accountData): Account!
     updateAccount(accountId: ID!, data: accountData): Account
@@ -71,6 +71,12 @@ const schema = gql`
 
   type MyUser {
     id: ID!,
+    email: String,
+    userType: Int,
+    emailVerified: Boolean
+  }
+
+  input userData {
     email: String,
     userType: Int,
     emailVerified: Boolean
