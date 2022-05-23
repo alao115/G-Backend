@@ -6,6 +6,5 @@ yarn-error.log
 .env
 todo.yml
 package-lock.json
-.dist
 dist
-dist/public
+jenkins
