@@ -133,6 +133,11 @@ export default {
   // },
 
   Mutation: {
+    updateUser(parent: any, { data, userId }: { data: any, userId: string }, { userService }: { userService: any }, info: any) {
+      if(!data || !userId) throw new UserInputError('Invalid user data')
+      return userService.update({ id: userId, data})
+    },
+
     createAccount(parent: any, { data }: { data: any}, { accountService }: { accountService: any }, info: any) {
       if(!data) throw new UserInputError('Invalid account data')
       return accountService.create(data)

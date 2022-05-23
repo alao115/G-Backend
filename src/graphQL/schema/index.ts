@@ -28,6 +28,8 @@ const schema = gql`
   }
 
   type Mutation {
+    updateUser(userId: ID!, data: userData): User
+
     createAccount(data: accountData): Account!
     updateAccount(accountId: ID!, data: accountData): Account
     deleteAccount(accountId: ID!): Account
