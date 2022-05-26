@@ -18,4 +18,14 @@ export default ({ appartmentService, appartmentTypeService }: { appartmentServic
       next(error)
     }
   }
+
+  searchAppartment: RequestHandler = async (req, res, next) => {
+    try {
+      const searchOpts = req.body
+      const response = await appartmentService.searchAppartment(searchOpts)
+      return res.send({ success: 1, data: { appartments: response }})
+    } catch (error) {
+      next(error)
+    }
+  }
 }

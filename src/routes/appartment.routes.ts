@@ -8,4 +8,6 @@ export default ({ app, AppartmentController }: { app: Express; AppartmentControl
     router.get('/', AppartmentController.getAllAppartment)
 
     router.get('/appartmenttypes', AppartmentController.getAllAppartmentType)
+
+    router.post('/search', AppartmentController.searchAppartment)
 }
