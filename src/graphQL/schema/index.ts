@@ -204,6 +204,10 @@ const schema = gql`
     phone: String
     email: String
   }
+  input geometryData {
+    type: String
+    coordinates: [Float!]!
+  }
   input appartmentData {
     mainImg: String
     firstImg: String
@@ -214,6 +218,7 @@ const schema = gql`
     isFurnished: Boolean
     forShortStay: Boolean
     location: String
+    geometry: geometryData
     rent: Int
     details: String
     rooms: Int

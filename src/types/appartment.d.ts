@@ -10,6 +10,10 @@ export default interface Appartment {
   isFurnished: boolean;
   forShortStay: boolean;
   location: string;
+  geometry: {
+    type: string;
+    coordinates: [lng: number, lat: number]
+  };
   rent: number;
   details: string;
   rooms: number;

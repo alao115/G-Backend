@@ -47,7 +47,17 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
   },
   location: {
     type: String,
-    // required: true
+    required: true
+  },
+  geometry: {
+    type: {
+     type: String,
+     default: 'Point'
+    },
+    coordinates: [{
+      type: Number,
+      required: true
+    }]
   },
   rent: {
     type: Number,

@@ -6,6 +6,8 @@ import serviceGeneratorService from './serviceGenerator.service'
 import firebaseStorageManager from './firebase.storage.service'
 import mailServiceManager from './email.service'
 
+import appartmentServiceManager from './appartment.service'
+
 import { User, Account, Appartment, AppartmentDetail, Publication, Reservation, Visit, AppartmentType, Favory } from "../models"
 import firebaseApp from '../loaders/firebase'
 
@@ -17,7 +19,7 @@ const userService = new serviceGeneratorService(User)
 
 const accountService = new serviceGeneratorService(Account)
 
-const appartmentService = new serviceGeneratorService(Appartment)
+const appartmentService = new (appartmentServiceManager({ Appartment, ServiceGenerator: serviceGeneratorService })) //serviceGeneratorService(Appartment))
 
 const appartmentDetailService = new serviceGeneratorService(AppartmentDetail)
 
