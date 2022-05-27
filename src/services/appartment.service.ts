@@ -19,7 +19,7 @@ export default ({ Appartment, ServiceGenerator }: { Appartment: any; ServiceGene
             ]
           }
         },
-        bedrooms: { $gte: searchOpts.roomQty },
+        rooms: { $gte: searchOpts.roomQty },
         rent: { $gte: searchOpts.budgetMin }
       })
       return response

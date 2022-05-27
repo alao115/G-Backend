@@ -69,7 +69,9 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
   },
   rooms: {
     type: Number,
-    default: 0
+    default () {
+      return this.livingrooms + this.bathrooms + this.bedrooms + this.storageroom + this.kitchen
+    }
   },
   bathrooms: {
     type: Number,
