@@ -148,6 +148,11 @@ const schema = gql`
     email: String
   }
 
+  type timeSlots {
+    day: String
+    selectedTimes: [String]
+  }
+
   type Appartment {
     id: ID!
     createdBy: Account
@@ -180,6 +185,7 @@ const schema = gql`
     ownerInfos: ownerInfos
     likes: Int
     favorite: Int
+    timeSlots: [timeSlots]
   }
 
   input appartmentConditionData {
@@ -207,6 +213,10 @@ const schema = gql`
   input geometryData {
     type: String
     coordinates: [Float!]!
+  }
+  input timeSlotsData {
+    day: String
+    selectedTimes: [String]
   }
   input appartmentData {
     mainImg: String
@@ -239,6 +249,7 @@ const schema = gql`
     ownerInfos: ownerInfosData
     likes: Int
     favorite: Int
+    timeSlots: [timeSlotsData!]
   }
 
   type AppartmentDetail {

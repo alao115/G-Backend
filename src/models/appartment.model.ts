@@ -193,6 +193,16 @@ const appartmentSchema = new Schema<Appartment, Model<Appartment>, Appartment>({
     type: Number,
     default: 0
   },
+  timeSlots: [{
+    day: {
+      type: String,
+      default: ''
+    },
+    selectedTimes: [{
+      type: String,
+      default: ''
+    }]
+  }]
 }, {
   timestamps: { currentTime: () => moment().unix() }
 })

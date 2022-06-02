@@ -1,3 +1,8 @@
+type timeSlots = {
+  day: String
+  selectedTimes: string []
+}
+
 export default interface Appartment {
   id: string;
   createdBy: string;
@@ -50,4 +55,5 @@ export default interface Appartment {
   favorite: number;
   rentStart: number;
   rentEnd: number;
+  timeSlots: timeSlots[]
 }
