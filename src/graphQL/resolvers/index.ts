@@ -227,11 +227,11 @@ export default {
     createVisit(parent: any, { data }: { data: any}, { visitService }: { visitService: any }, info: any) {
       if(!data) throw new UserInputError('Invalid visit data')
 
-      return visitService.create({ ...data, date: moment(data.date).unix() })
+      return visitService.create({ ...data, /* date: moment(data.date).unix() */ })
     },
     updateVisit(parent: any, { data, visitId }: { data: any, visitId: string }, { visitService }: { visitService: any }, info: any) {
       if(!data || !visitId) throw new UserInputError('Invalid visit data')
-      return visitService.update({ id: visitId, data: { ...data, date: moment(data.date).unix() } })
+      return visitService.update({ id: visitId, data: { ...data, /* date: moment(data.date).unix() */ } })
     },
     deleteVisit(parent: any, { data, visitId }: { data: any, visitId: string }, { visitService }: { visitService: any }, info: any) {
       if(!visitId) throw new UserInputError('Invalid visit data')
