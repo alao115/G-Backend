@@ -34,7 +34,7 @@ const visitSchema = new Schema<Visit, Model<Visit>, Visit>({
   date: {
     type: String,
     required: true,
-    get: (v: any ) => moment.unix(v).format("DD-MM-YYYY")
+    // get: (v: any ) => moment.unix(v).format("DD-MM-YYYY")
   },
   status: {
     type: String,
