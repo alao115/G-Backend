@@ -6,6 +6,12 @@ export default class serviceGenerator<T extends Model<any>> {
 
   constructor(protected Model: T) { }
 
+  async aggregate(searchOpts: any) {
+    try {
+      return await this.Model.aggregate(searchOpts)
+    } catch (error) { throw error }
+  }
+
   async getAll() {
     try {
       const entities = await this.Model.find({}, { __v: false });
