@@ -4,6 +4,10 @@ export default interface Reservation {
   user: string
   createdBy: string
   createdAt: string
-  status: string
-  date: string
+  status: number
+  startDate: string
+  endDate: string
+  startTime: string
+  endTime: string
+  archive: boolean
 }

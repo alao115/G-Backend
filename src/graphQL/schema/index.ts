@@ -338,19 +338,24 @@ const schema = gql`
     id: ID!
     appartment: String
     user: String
-    createdBy: String
     createdAt: String
-    status: String
-    date: String
+    startDate: String
+    startTime: String
+    endDate: String
+    endTime: String
+    archive: Boolean
+    status: Int
   }
 
   input reservationData {
-    appartment: String
-    user: String
-    createdBy: String
-    createdAt: String
-    status: String
-    date: String
+    appartment: String!
+    user: String!
+    startDate: String!
+    startTime: String
+    endDate: String
+    endTime: String
+    archive: Boolean
+    status: Int
   }
 
   type Visit {
