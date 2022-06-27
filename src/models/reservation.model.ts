@@ -13,19 +13,32 @@ const reservationSchema = new Schema<Reservation, Model<Reservation>, Reservatio
     type: String,
     required: true,
   },
+  startDate: {
+    type: String,
+    required: true,
+  },
+  startTime: {
+    type: String,
+    // required: true,
+  },
+  endDate: {
+    type: String,
+  },
+  endTime: {
+    type: String,
+  },
+  archive: {
+    type: Boolean,
+    default: false
+  },
   user: {
     type: String,
     required: true,
   },
-  createdBy: String,
   createdAt: String,
   status: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: String,
-    required: true,
+    type: Number,
+    default: 0,
   }
 }, {
   timestamps: { currentTime: () => moment().unix() }
