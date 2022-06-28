@@ -355,6 +355,7 @@ const schema = gql`
     endDate: String
     endTime: String
     archive: Boolean
+    createdAt: String
     status: Int
   }
 
