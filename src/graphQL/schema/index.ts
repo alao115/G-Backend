@@ -376,8 +376,8 @@ const schema = gql`
 
   type Favory {
     id: ID!
-    user: Account
-    appartment: Appartment
+    user: Account!
+    appartment: Appartment!
   }
 
   input favoryData {
