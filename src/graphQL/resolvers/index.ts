@@ -106,7 +106,7 @@ export default {
       return accountService.findOne({ user: parent.user })
     },
     appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
-      return appartmentService.findOne({ _id: parent.appartment })
+      return appartmentService.findOne({ id: parent.appartment })
     },
   },
   Appartment: {
