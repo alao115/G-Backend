@@ -13,32 +13,22 @@ const visitSchema = new Schema<Visit, Model<Visit>, Visit>({
     type: String,
     required: true,
   },
-  visitorInfos: {
-    firstname: {
-      type: String,
-      default: ''
-    },
-    lastname: {
-      type: String,
-      default: ''
-    },
-    phone: {
-      type: String,
-      default: ''
-    },
-    email: {
-      type: String,
-      default: ''
-    },
+  visitor: {
+    type: String,
+    required: true
   },
   date: {
     type: String,
     required: true,
     // get: (v: any ) => moment.unix(v).format("DD-MM-YYYY")
   },
+  archive: {
+    type: Boolean,
+    default: false
+  },
   status: {
-    type: String,
-    default: ''
+    type: Number,
+    default: 0
   }
 }, {
   timestamps: { currentTime: () => moment().unix() }

@@ -1,12 +1,8 @@
 export default interface Visit {
   id: string;
   appartment: string;
-  visitorInfos: {
-    firstname: string;
-    lastname: string;
-    phone: string;
-    email: string;
-  };
+  visitor: string;
   date: string;
-  status: string;
+  status: number;
+  archive: boolean
 }
