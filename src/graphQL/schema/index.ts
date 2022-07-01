@@ -361,17 +361,19 @@ const schema = gql`
 
   type Visit {
     id: ID!
-    appartment: String
-    visitorInfos: visitorInfos
-    date: String
-    status: String
+    appartment: Appartment!
+    visitor: Account!
+    date: String!
+    status: Int
+    archive: Boolean
   }
 
   input visitData {
     appartment: String
-    visitorInfos: visitorInfosData
+    visitor: String
     date: String
-    status: String
+    status: Int
+    archive: Boolean
   }
 
   type Favory {

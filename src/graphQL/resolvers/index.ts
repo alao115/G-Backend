@@ -123,14 +123,14 @@ export default {
   //     return accountService.findOne({ user: parent.user })
   //   }
   // },
-  // Visit: {
-  //   appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
-  //     return appartmentService.findByID({ id: parent.appartment })
-  //   },
-  //   user (parent: any, args: any, { accountService, res }: { accountService: any, res: any}, info: any) {
-  //     return accountService.findOne({ user: parent.user })
-  //   }
-  // },
+  Visit: {
+    appartment (parent: any, args: any, { appartmentService, res }: { appartmentService: any,  res: any}, info: any) {
+      return appartmentService.findByID({ id: parent.appartment })
+    },
+    visitor (parent: any, args: any, { accountService, res }: { accountService: any, res: any}, info: any) {
+      return accountService.findOne({ user: parent.visitor })
+    }
+  },
 
   Mutation: {
     updateUser(parent: any, { data, userId }: { data: any, userId: string }, { userService }: { userService: any }, info: any) {
