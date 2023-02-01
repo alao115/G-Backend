@@ -6,21 +6,25 @@ services:
     container_name: 'gontche_mongodb'
     image: "mongo"
     volumes:
-      - '/data/db:/data/db'
-      - '/data/db/mongod.conf:/etc/mongod.conf'
+      - '/data/db_6:/data/db'
+      # - '/data/db/mongod.conf:/etc/mongod.conf'
     ports:
       - '27017:27017'
-    command:
-      - "--auth"
+    # command:
+      # - "--auth"
       #- "--config"
       #- "/etc/mongod.conf"
 
   redis:
     container_name: 'gontche_redis'
     image: 'redis'
+    volumes:
+      - redis_storage:/data/redis
     ports:
       - '6379:6379'
 
+volumes:
+  redis_storage:
   # api:
   #   container_name: api
   #   image: 'html/api_boilerplate'
